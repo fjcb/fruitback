@@ -2,11 +2,28 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.12'
 
-# Bundle edge Rails instead:
-# gem 'rails', :git => 'git://github.com/rails/rails.git'
+gem 'sqlite3', '1.3.7'
 
-gem 'sqlite3'
+gem 'bootstrap-sass', '2.1'
 
+gem 'haml', '4.0.0'
+
+gem 'simple_form', '2.0.4'
+
+gem 'factory_girl', '4.2.0'
+
+gem 'devise', '2.2.3'
+
+gem 'inherited_resources'
+
+group :development do
+  gem 'haml-rails', '0.4'
+  gem 'quiet_assets', '1.0.1'
+end
+
+group :development, :test do
+  gem 'rspec-rails', '2.11.0'
+end
 
 # Gems used only for assets and not required
 # in production environments by default.
