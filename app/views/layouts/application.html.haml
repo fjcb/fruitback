@@ -5,7 +5,7 @@
     = stylesheet_link_tag    "application", :media => "all"
     = javascript_include_tag "application"
     = csrf_meta_tags
-  %body
+  %body{ "onLoad" => "$('.alert').alert()" }
     .container
       .navbar.navbar-inverse
         .navbar-inner
@@ -22,19 +22,25 @@
                   =link_to root_path do
                     %i.icon-home.icon-white
                     Home
-                    
+                
+                - if current_user.try :admin
+                  %li= link_to "Manage sites", sites_path
+                
                 %li
                   - if user_signed_in?
                     = link_to 'Logout', destroy_user_session_path, :method => :delete
                   - else
                     = link_to 'Login', new_user_session_path
                     
-                - if current_user
-                  %li.text= "Logged in as #{current_user.email}" 
+              - if current_user
+                %p.logged-in= "Logged in as #{current_user.email}" 
               
     .container
       - if notice
-        %p.notice= notice
+        %div.alert.alert-success
+          = notice
+          - #%a.close{"data-dismiss" => "alert", :href => "#"} &times;
       - if alert
-        %p.alert= alert
+        %p.alert.alert-error= alert
+        
       = yield

@@ -16,6 +16,10 @@ gem 'devise', '2.2.3'
 
 gem 'inherited_resources'
 
+gem 'cancan'
+
+gem 'foreigner'
+
 group :development do
   gem 'haml-rails', '0.4'
   gem 'quiet_assets', '1.0.1'

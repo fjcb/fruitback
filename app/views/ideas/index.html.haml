@@ -1,0 +1,10 @@
+
+%h1 Ideas
+
+%table.table.table-hover.table-bordered
+  %tbody
+    - @ideas.each do |idea|
+      %tr
+        %td= link_to idea.title, idea_path(idea)
+
+= render 'form'

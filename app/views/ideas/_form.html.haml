@@ -1,0 +1,17 @@
+
+%h2 Add an idea
+
+= simple_form_for(@idea) do |f|
+  - if @idea.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(@site.errors.count, "error")
+        prohibited this site from being saved:
+      %ul
+        - @customer.errors.full_messages.each do |msg|
+          %li= msg
+          
+  = f.input :title
+  = f.textbox :description
+  
+  = f.button :submit
