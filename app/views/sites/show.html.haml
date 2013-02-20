@@ -1,12 +1,7 @@
 %h1= "Manage '#{@site.name}'"
 
-%h2 Ideas
+= link_to 'Show ideas', site_ideas_path(@site)
 
-%table.table.table-hover.table-bordered
-  %tbody
-    - @ideas.each do |idea|
-      %tr
-        %td= link_to idea.title, site_idea_path(@site, idea)
 
 %h2 Change site
 = render 'form'

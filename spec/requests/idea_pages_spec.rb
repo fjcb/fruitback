@@ -10,11 +10,6 @@ describe "IdeaPages" do
     @idea.update_attribute :site_id, @site.id
   end
   
-  describe "site has ideas" do
-    let(:idea) { Idea.find(@idea.id) }
-    specify { idea.site.should == @site }
-  end
-  
   describe "site" do
     
     let(:idea) { Idea.find(@idea.id) }
@@ -24,10 +19,16 @@ describe "IdeaPages" do
     end
 
     it "shows ideas" do
-      visit site_ideas_path(@site, idea)
+      visit site_idea_path(@site, idea)
       page.should have_selector "h1", text: "New idea"
     end
   
+    it "has a link to its ideas" do
+      visit site_path(@site)
+      page.should have_selector "a", text: "Show ideas"
+    end
+    
+    
     
   end
   
