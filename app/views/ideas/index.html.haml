@@ -5,6 +5,6 @@
   %tbody
     - @ideas.each do |idea|
       %tr
-        %td= link_to idea.title, idea_path(idea)
+        %td= link_to idea.title, site_idea_path(@site, idea)
 
 = render 'form'

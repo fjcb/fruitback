@@ -6,12 +6,8 @@ Fruitback::Application.routes.draw do
   
   resources :sites do
     
-    resources :ideas do
-      
-      resources :comments
-      
-    end
-    
+    resources :ideas
+  
   end
   
   match ':sites/:id/widget' => 'sites#widget'

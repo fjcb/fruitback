@@ -1,7 +1,5 @@
 - if can? :create, @site
   
-  %h2 Add a site
-
   = simple_form_for(@site) do |f|
     - if @site.errors.any?
       #error_explanation

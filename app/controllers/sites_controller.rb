@@ -8,6 +8,12 @@ class SitesController < ApplicationController
     super
   end
   
+  def show
+    @site = Site.find(params[:id])
+    @ideas = @site.ideas
+    super
+  end
+  
   def widget
     @site = Site.find(params[:id])
     respond_to do |format|
