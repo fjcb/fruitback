@@ -4,13 +4,38 @@ class Ability
   def initialize(user)
     
     user ||= User.new # guest user (not logged in)
+    
     if user.admin?
+      
+      # ADMIN
       can :manage, :all
+      
+    elsif user.customer?
+      
+      # CUSTOMER
+      
+      can :create, Site
+      
+      #manage own sites
+      can :manage, Site, user: user
+      
+      # edit own ideas
+      can :update, Idea, user: user, site: { user: user }
+      
     else
-      can :read, :all
+      
+      # VISITOR
+      
+      # edit own ideas
       can :update, Idea, user: user, can_be_edited?: true
-      can :create, Idea
+    
     end
+    
+    # EVERYBODY
+    
+    can :create, Idea
+    
+    can :read, :all
     
     # Define abilities for the passed in user here. For example:
     #

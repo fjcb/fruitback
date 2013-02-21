@@ -6,7 +6,11 @@ Fruitback::Application.routes.draw do
   
   resources :sites do
     
-    resources :ideas
+    resources :ideas do
+      
+      resources :comments
+      
+    end
   
   end
   

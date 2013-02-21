@@ -3,7 +3,7 @@ require 'spec_helper'
 describe "IdeaPages" do
   
   before do
-    @site = Site.new name: "Bananinator", url: "bananinator.com"
+    @site = FactoryGirl.build(:bananinator)
     @idea = Idea.new title: "New idea", description: "I have an idea..."
     @site.save
     @idea.save
