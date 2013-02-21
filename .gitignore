@@ -10,7 +10,7 @@
 # Ignore unix files
 .DS_Store
 Gemfile.lock
-.ntf.*
+.nfs.*
 
 # Ignore the default SQLite database.
 /db/*.sqlite3
