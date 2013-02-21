@@ -6,6 +6,7 @@ class IdeasController < ApplicationController
     @idea = Idea.find(params[:id])
     @site = Site.find(params[:site_id])
     @form_url = site_idea_path(@site, @idea)
+    @comment = Comment.new
     super
   end
   
@@ -27,6 +28,7 @@ class IdeasController < ApplicationController
   def create
     @idea = Idea.new(params[:idea])
     @idea.user = current_user
+    
     @site = Site.find(params[:site_id])
     @site.ideas.push @idea
     @site.save

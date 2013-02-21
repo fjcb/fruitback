@@ -27,4 +27,8 @@
 -if !@idea.comments.empty?
   %h2 Comments
   - @idea.comments.each do |comment|
-    = #render partial: 'comments/show'
+    = render 'comments/show', comment: comment
+
+- if can? :create, @comment
+  %h3 Add comment
+  = render 'comments/form', url: site_idea_comments_path(@site, @idea)

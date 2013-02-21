@@ -1,10 +1,9 @@
-%h1= "Manage #{ @site.name }"
+%h1= @site.name
 
 - if @site.user
   %p= "Owner: #{ @site.user.email }"
 
 = link_to 'Show ideas', site_ideas_path(@site)
-
 
 - if can? :update, @site
   %h2 Change site

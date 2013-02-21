@@ -27,13 +27,14 @@ class Ability
       # VISITOR
       
       # edit own ideas
-      can :update, Idea, user: user, can_be_edited?: true
+      can :update, Idea, user: user, editable?: true
     
     end
     
     # EVERYBODY
     
     can :create, Idea
+    can :create, Comment
     
     can :read, :all
     

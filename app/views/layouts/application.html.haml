@@ -23,8 +23,7 @@
                     %i.icon-home.icon-white
                     Home
                 
-                - if current_user.try :admin
-                  %li= link_to "Manage sites", sites_path
+                %li= link_to "Sites", sites_path
                 
                 %li
                   - if user_signed_in?
