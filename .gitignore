@@ -9,7 +9,6 @@
 
 # Ignore unix files
 .DS_Store
-Gemfile.lock
 .nfs.*
 
 # Ignore the default SQLite database.

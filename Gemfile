@@ -1,18 +1,16 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.12'
+gem 'rails', '~> 3.2.12'
 
 gem 'sqlite3', '1.3.7'
 
-gem 'bootstrap-sass', '2.1'
+gem 'bootstrap-sass'
 
-gem 'haml', '4.0.0'
+gem 'haml'
 
-gem 'simple_form', '2.0.4'
+gem 'simple_form'
 
-gem "factory_girl_rails"
-
-gem 'devise', '2.2.3'
+gem 'devise'
 
 gem 'inherited_resources'
 
@@ -20,18 +18,24 @@ gem 'cancan'
 
 gem 'foreigner'
 
+gem 'jquery-rails'
+
+gem 'better_errors'
+
+
 group :development do
-  gem 'haml-rails', '0.4'
-  gem 'quiet_assets', '1.0.1'
+  gem 'haml-rails'
+  gem 'quiet_assets'
 end
 
 group :development, :test do
-  gem 'rspec-rails', '2.11.0'
+  gem 'rspec-rails'
   gem 'faker'
 end
 
 group :test do
   gem 'capybara'
+  gem "factory_girl_rails"
 end
 
 # Gems used only for assets and not required
@@ -46,7 +50,9 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
-gem 'jquery-rails'
+group :production do
+  gem 'mysql2'
+end
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
