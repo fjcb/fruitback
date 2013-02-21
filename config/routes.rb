@@ -1,8 +1,10 @@
 Fruitback::Application.routes.draw do
-  
+
   root to: "static_pages#home"
   
   devise_for :users
+  
+  resources :micro_sites
   
   resources :sites do
     
