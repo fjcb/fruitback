@@ -7,4 +7,5 @@
       %tr
         %td= link_to idea.title, site_idea_path(@site, idea)
 
-= render 'form'
+- if can? :create, @idea
+  = render 'form'

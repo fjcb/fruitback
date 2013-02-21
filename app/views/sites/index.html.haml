@@ -1,12 +1,12 @@
 
 %h1 Your sites
 
-= link_to 'Show ideas', site_ideas_path(@site)
-
 %table.table.table-hover.table-bordered
   %tbody
     - @sites.each do |site|
       %tr
         %td= link_to site.name, site_path(site)
 
-= render 'form'
+- if can? :create, @site
+  %h2 Create new site
+  = render 'form'

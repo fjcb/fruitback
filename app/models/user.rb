@@ -10,5 +10,6 @@ class User < ActiveRecord::Base
   # attr_accessible :title, :body
   
   has_many :ideas
+  has_many :sites
   
 end
