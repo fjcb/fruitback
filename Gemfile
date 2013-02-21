@@ -10,7 +10,7 @@ gem 'haml', '4.0.0'
 
 gem 'simple_form', '2.0.4'
 
-gem 'factory_girl', '4.2.0'
+gem "factory_girl_rails"
 
 gem 'devise', '2.2.3'
 
@@ -27,6 +27,7 @@ end
 
 group :development, :test do
   gem 'rspec-rails', '2.11.0'
+  gem 'faker'
 end
 
 group :test do

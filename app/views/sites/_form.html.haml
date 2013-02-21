@@ -5,7 +5,7 @@
         = pluralize(@site.errors.count, "error")
         prohibited this site from being saved:
       %ul
-        - @customer.errors.full_messages.each do |msg|
+        - @site.errors.full_messages.each do |msg|
           %li= msg
           
   = f.input :name, placeholder: "Your site's name"

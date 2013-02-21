@@ -1,0 +1,15 @@
+
+= simple_form_for [@site, @idea, @comment], url: @form_url do |f|
+  - if @comment.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(@comment.errors.count, "error")
+        prohibited this site from being saved:
+      %ul
+        - @comment.errors.full_messages.each do |msg|
+          %li= msg
+          
+  = f.input :text, :as => :text, :input_html => { rows: 5 } 
+  
+  = f.button :submit
+  

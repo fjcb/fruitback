@@ -6,11 +6,11 @@
         = pluralize(@idea.errors.count, "error")
         prohibited this site from being saved:
       %ul
-        - @customer.errors.full_messages.each do |msg|
+        - @idea.errors.full_messages.each do |msg|
           %li= msg
           
   = f.input :title
-  = f.input :description
+  = f.input :description, :as => :text, :input_html => { rows: 5 } 
   
   = f.button :submit
   
