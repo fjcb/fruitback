@@ -1,9 +1,25 @@
 %h1= @idea.title
 
-This is the idea:
-= @idea.description
+%div.well
+  %p
+    = @idea.description
 
-It belongs to site:
-= @idea.site.name
-
-= render 'form'
+  %p
+    It belongs to site:
+    = @idea.site.name
+  
+  %p
+    posted by:
+    = @idea.user.email
+  
+  %small.text-right.muted
+    created @
+    = @idea.created_at
+  
+    - if @idea.edited?
+      and edited @
+      = @idea.updated_at
+  
+- if can? :update, @idea
+  %h2 Edit idea
+  = render 'form'

@@ -10,11 +10,13 @@ admin = User.create( email: 'admin@example.com', password: 'adminadmin')
 admin.update_attribute :admin, true
 
 site = Site.create( name: "Bananinator", url: "bananinator.com")
+site.update_attribute :user, admin
 
-idea = Idea.create( title: "New idea", description: "I have an idea..." )
-idea.update_attribute :user_id, admin.id
-idea.update_attribute :site_id, site.id
+idea = Idea.create( title: "New idea", description: "I have an idea...", user_id: admin.id, site_id: site.id )
+#idea.update_attribute :user_id, admin.id
+#idea.update_attribute :site_id, site.id
 
 
 
 Site.create!( name: "Other site", url: "othersite.com")
+User.create!( email: 'user@example.com', password: 'useruser')

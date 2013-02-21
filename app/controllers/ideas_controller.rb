@@ -26,11 +26,15 @@ class IdeasController < ApplicationController
   
   def create
     @idea = Idea.new(params[:idea])
+    @idea.user = current_user
     @site = Site.find(params[:site_id])
     @site.ideas.push @idea
     @site.save
     super do |format|
-      format.html { redirect_to site_ideas_path(@site) }
+      format.html {
+        redirect_to site_ideas_path(@site),
+        notice: "Idea was successfully created. You have 5 minutes left to edit it."
+      }
     end
   end
   

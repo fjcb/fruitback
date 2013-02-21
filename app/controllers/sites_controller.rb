@@ -14,6 +14,13 @@ class SitesController < ApplicationController
     super
   end
   
+  def create
+    @site = Site.new(params[:site])
+    @site.user = current_user
+    @site.save
+    super
+  end
+  
   def widget
     @site = Site.find(params[:id])
     respond_to do |format|
