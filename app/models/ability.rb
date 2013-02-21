@@ -8,7 +8,8 @@ class Ability
       can :manage, :all
     else
       can :read, :all
-      can :update, Idea, user: user
+      can :update, Idea, user: user, can_be_edited?: true
+      can :create, Idea
     end
     
     # Define abilities for the passed in user here. For example:

@@ -16,7 +16,7 @@
     created @
     = @idea.created_at
   
-    - if @idea.updated_at > @idea.created_at + 60 # seconds, TODO: add to global config
+    - if @idea.edited?
       and edited @
       = @idea.updated_at
   
