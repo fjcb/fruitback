@@ -5,9 +5,7 @@
     = render 'layouts/shim'
   %body{ "onLoad" => "$('.alert').alert()" }
     %div.container
-      %div.header
-        = render 'layouts/app_header'
-          
+      %div.header          
         = render 'layouts/app_nav'
       %div.main.container-fluid  
         %div.row-fluid
