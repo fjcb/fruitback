@@ -4,6 +4,8 @@ gem 'rails', '~> 3.2.12'
 
 gem 'sqlite3', '1.3.7'
 
+gem 'jquery-rails'
+
 gem 'bootstrap-sass'
 
 gem 'haml'
@@ -14,18 +16,20 @@ gem 'devise'
 
 gem 'inherited_resources'
 
-gem 'cancan'
-
 gem 'foreigner'
 
-gem 'jquery-rails'
+gem 'cancan'
 
-gem 'better_errors'
+gem 'rolify'
 
+gem 'spork'
+
+gem 'thin'
 
 group :development do
   gem 'haml-rails'
   gem 'quiet_assets'
+  gem 'better_errors'
 end
 
 group :development, :test do
@@ -52,6 +56,11 @@ end
 
 group :production do
   gem 'mysql2'
+end
+
+group :deployment do
+  gem 'capistrano'
+  gem 'rvm-capistrano'
 end
 
 # To use ActiveModel has_secure_password
