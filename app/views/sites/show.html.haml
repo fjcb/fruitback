@@ -3,8 +3,17 @@
 - if @site.user
   %p= "Owner: #{ @site.user.email }"
 
-= link_to 'Show ideas', site_ideas_path(@site)
-
 - if can? :update, @site
   %h2 Change site
   = render 'form'
+
+%h2 Ideas
+
+%table.table.table-hover.table-bordered
+  %tbody
+    - @ideas.each do |idea|
+      %tr
+        %td= link_to idea.title, site_idea_path(@site, idea)
+
+- if can? :create, @idea
+  = render 'ideas/form'

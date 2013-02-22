@@ -4,8 +4,8 @@ class IdeasController < ApplicationController
   
   def show
     @idea = Idea.find(params[:id])
-    #@site = @idea.site
-    @site = Site.find(params[:site_id])
+    @site = @idea.site
+    #@site = Site.find(params[:site_id])
     @form_url = site_idea_path(@site, @idea)
     @comment = Comment.new
     super

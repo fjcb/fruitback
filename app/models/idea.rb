@@ -9,7 +9,7 @@ class Idea < ActiveRecord::Base
   
   has_many :comments
   
-  def can_be_edited?
+  def editable?
     Time.now < created_at + 60*10
   end
   
