@@ -1,0 +1,11 @@
+// Place all the styles related to the micro_sites controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+<<<<<<< HEAD
+
+.scrollable {
+  overflow-y: scroll;
+  height: 500px;
+}
+=======
+>>>>>>> 30ec6c80976c917bfeef060977a2649db24dfd5a
