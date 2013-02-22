@@ -14,7 +14,7 @@
 ActiveRecord::Schema.define(:version => 20130221125905) do
 
   create_table "comments", :force => true do |t|
-    t.string   "text"
+    t.string   "text",       :null => false
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
     t.integer  "idea_id"
@@ -25,11 +25,11 @@ ActiveRecord::Schema.define(:version => 20130221125905) do
   add_index "comments", ["user_id"], :name => "index_comments_on_user_id"
 
   create_table "ideas", :force => true do |t|
-    t.string   "title"
-    t.string   "description"
-    t.integer  "score"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.string   "title",                      :null => false
+    t.string   "description",                :null => false
+    t.integer  "score",       :default => 0, :null => false
+    t.datetime "created_at",                 :null => false
+    t.datetime "updated_at",                 :null => false
     t.integer  "user_id"
     t.integer  "site_id"
   end
@@ -38,7 +38,7 @@ ActiveRecord::Schema.define(:version => 20130221125905) do
   add_index "ideas", ["user_id"], :name => "index_ideas_on_user_id"
 
   create_table "sites", :force => true do |t|
-    t.string   "name"
+    t.string   "name",       :null => false
     t.string   "url"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
