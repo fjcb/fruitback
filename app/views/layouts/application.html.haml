@@ -38,8 +38,8 @@
                   - else
                     = link_to 'Login', new_user_session_path
                     
-              - if current_user
-                %p.logged-in= "Logged in as #{current_user.email}" 
+              - if logged_in?
+                %p.logged-in= "Logged in as #{current_user.name}" 
               
     .container
       - if notice

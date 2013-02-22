@@ -27,6 +27,14 @@ class IdeasController < ApplicationController
   end
   
   def create
+    
+    # Log in Anonymous user if not logged in, in order to be able to create an idea
+    if !logged_in?
+      user = User.new name: "Anonymous"
+      user.save
+      sign_in(user)
+    end
+    
     @idea = Idea.new(params[:idea])
     @idea.user = current_user
     

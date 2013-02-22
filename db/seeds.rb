@@ -12,5 +12,5 @@ FactoryGirl.create(:admin)
 #FactoryGirl.create(:comment)
 
 FactoryGirl.create(:site)
-FactoryGirl.create(:site)
+#FactoryGirl.create(:site)
 
