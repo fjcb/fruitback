@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   helper_method :development?
   helper_method :admin?
   helper_method :customer?
+  helper_method :anonymous?
   helper_method :logged_in?
   
   protected
@@ -20,8 +21,12 @@ class ApplicationController < ActionController::Base
     current_user.try(:customer?)
   end
   
+  def anonymous?
+    !current_user.try(:email)
+  end
+  
   def logged_in?
-    current_user
+    !!current_user
   end
   
 end

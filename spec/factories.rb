@@ -3,11 +3,13 @@ FactoryGirl.define do
   
   factory :user do
     sequence(:email) { |n| "user#{n}@example.com" }
+    sequence(:name) { |n| Faker::Name.name }
     password "useruser"
   end
 
   factory :customer, class: User do
     sequence(:email) { |n| "customer#{n}@example.com" }
+    sequence(:name) { |n| Faker::Name.name }
     password "customer"
     customer true
   end
@@ -16,6 +18,7 @@ FactoryGirl.define do
     #sequence(:email) { |n| "admin#{n}@example.com" }
     email "admin@example.com"
     password "adminadmin"
+    name "admin"
     admin true
   end
   
