@@ -25,6 +25,14 @@ h1, h2, h3, h4, h5 {
   line-height: 25px;
 }
 
+h1 {
+    font-size: 22px;
+}
+  
+h2 {
+  font-size: 20px;
+}
+
 p {
   font-family: 'Open Sans';
   font-weight: normal;
@@ -61,6 +69,33 @@ body {
 
 .sidebar {
   padding: 10px;
+}
+
+.footer {
+  font-family: 'Open Sans';
+  font-size: 11px;
+  text-align: center;
+  
+  a {
+    color: $dark_gray;
+  }
+  
+  a:hover {
+    color: #fff;
+    text-decoration: none;
+  }
+  
+  li {
+    list-style: none;
+    display: inline-block;
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+  
+}
+
+.alert-custom {
+  margin-top: 20px;
 }
 
 //overwritten bootstrap definitions
