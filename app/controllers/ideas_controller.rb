@@ -4,8 +4,8 @@ class IdeasController < ApplicationController
   
   def show
     @idea = Idea.find(params[:id])
-    #@site = @idea.site
-    @site = Site.find(params[:site_id])
+    @site = @idea.site
+    #@site = Site.find(params[:site_id])
     @form_url = site_idea_path(@site, @idea)
     @comment = Comment.new
     super
@@ -27,6 +27,14 @@ class IdeasController < ApplicationController
   end
   
   def create
+    
+    # Log in Anonymous user if not logged in, in order to be able to create an idea
+    if !logged_in?
+      user = User.new name: "Anonymous"
+      user.save
+      sign_in(user)
+    end
+    
     @idea = Idea.new(params[:idea])
     @idea.user = current_user
     

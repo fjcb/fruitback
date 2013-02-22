@@ -12,6 +12,10 @@
       %div.main.container-fluid  
         %div.row-fluid
           %div.span12  
+                  %li= link_to "My sites", sites_path
+                  
+                -elsif logged_in?
+                  %li= link_to "Sites I posted on", sites_path
                 
             = render 'layouts/alert'
           

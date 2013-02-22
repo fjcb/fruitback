@@ -30,16 +30,17 @@ group :development do
   gem 'haml-rails'
   gem 'quiet_assets'
   gem 'better_errors'
+  gem 'binding_of_caller'
 end
 
 group :development, :test do
   gem 'rspec-rails'
   gem 'faker'
+  gem "factory_girl_rails"
 end
 
 group :test do
   gem 'capybara'
-  gem "factory_girl_rails"
 end
 
 # Gems used only for assets and not required

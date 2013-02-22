@@ -36,7 +36,9 @@ class Ability
     can :create, Idea
     can :create, Comment
     
-    can :read, :all
+    can :read, Site
+    can :read, Idea
+    can :read, Comment
     
     # Define abilities for the passed in user here. For example:
     #
