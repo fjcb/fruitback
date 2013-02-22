@@ -1,14 +1,9 @@
 = simple_form_for(@site) do |f|
-  - if @site.errors.any?
-    #error_explanation
-      %h2
-        = pluralize(@site.errors.count, "error")
-        prohibited this site from being saved:
-      %ul
-        - @site.errors.full_messages.each do |msg|
-          %li= msg
-          
-  = f.input :name, placeholder: "Your site's name"
-  = f.input :url, placeholder: "Your site's url"
+  = f.error_notification
   
-  = f.button :submit
+  %div.form-inputs
+    = f.input :name, placeholder: "Your site's name", required: true
+    = f.input :url, placeholder: "Your site's url"
+  
+  %div.form-actions
+    = f.button :submit

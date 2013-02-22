@@ -1,0 +1,7 @@
+
+- if @user == current_user
+  %h1 Your profile
+  = render 'form'
+  
+-else
+  %h1= @user.name
