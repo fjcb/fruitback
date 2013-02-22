@@ -1,0 +1,27 @@
+.container
+  .navbar.navbar-inverse
+    .navbar-inner
+      .container
+        %a.btn.btn-navbar{"data-target" => ".nav-collapse", "data-toggle" => "collapse"}
+          %span.icon-bar
+          %span.icon-bar
+          %span.icon-bar
+        %a.brand{:href => root_path}
+          FruitBack
+        .nav-collapse
+          %ul.nav.nav_custom
+            %li{:class => "#{'active' if current_page?(root_path)}"}
+              =link_to root_path do
+                %i.icon-home.icon-white
+                Home
+            
+            %li= link_to "Sites", sites_path
+            
+            %li
+              - if user_signed_in?
+                = link_to 'Logout', destroy_user_session_path, :method => :delete
+              - else
+                = link_to 'Login', new_user_session_path
+                
+          - if current_user
+            %p.logged-in= "Logged in as #{current_user.email}" 

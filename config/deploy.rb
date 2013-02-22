@@ -12,6 +12,8 @@ set :bundle_without, [:development, :test, :deployment]
 # Assets
 load 'deploy/assets'
 
+ssh_options[:keys] = ['C:\user\admin\.ssh\fjacob_key']
+
 set :user, "rails"
 set :use_sudo, false
 set :deploy_via, :remote_cache

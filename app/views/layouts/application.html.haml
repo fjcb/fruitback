@@ -2,44 +2,27 @@
 %html
   %head
     %title Fruitback
-    = stylesheet_link_tag    "application", :media => "all"
-    = javascript_include_tag "application"
-    = csrf_meta_tags
+    = render 'layouts/shim'
   %body{ "onLoad" => "$('.alert').alert()" }
-    .container
-      .navbar.navbar-inverse
-        .navbar-inner
-          .container
-            %a.btn.btn-navbar{"data-target" => ".nav-collapse", "data-toggle" => "collapse"}
-              %span.icon-bar
-              %span.icon-bar
-              %span.icon-bar
-            %a.brand{:href => root_path}
-              FruitBack
-            .nav-collapse
-              %ul.nav
-                %li{:class => "#{'active' if current_page?(root_path)}"}
-                  =link_to root_path do
-                    %i.icon-home.icon-white
-                    Home
+    %div.container
+      %div.header
+        = render 'layouts/app_header'
+          
+        = render 'layouts/app_nav'
+      %div.main.container-fluid  
+        %div.row-fluid
+          %div.span12  
                 
-                %li= link_to "Sites", sites_path
+            = render 'layouts/alert'
+          
+            %div.row-fluid
+              %div.span8
+                %div.content
+                  = yield
                 
-                %li
-                  - if user_signed_in?
-                    = link_to 'Logout', destroy_user_session_path, :method => :delete
-                  - else
-                    = link_to 'Login', new_user_session_path
-                    
-              - if current_user
-                %p.logged-in= "Logged in as #{current_user.email}" 
-              
-    .container
-      - if notice
-        %div.alert.alert-success
-          = notice
-          - #%a.close{"data-dismiss" => "alert", :href => "#"} &times;
-      - if alert
-        %p.alert.alert-error= alert
-        
-      = yield
+              %div.span4  
+                %div.sidebar
+                  Sidebar
+          
+            
+            = render 'layouts/app_footer'

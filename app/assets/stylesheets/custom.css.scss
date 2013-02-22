@@ -1,4 +1,12 @@
 @import "bootstrap";
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,700);
+
+//ci colors
+$yellow: #FAE117;
+$blue: #009FE3;
+$light_gray: #B1B1B1;
+$dark_gray: #333333;
+//
 
 p.logged-in {
   padding: 10px 0 0;
@@ -7,4 +15,63 @@ p.logged-in {
   float: right;
   text-weight: none;
   font-size: 11px;
+}
+
+h1, h2, h3, h4, h5 {
+  font-family: 'Open Sans';
+  font-weight: bold;
+  font-size: 18px;
+  color: #333;
+  line-height: 25px;
+}
+
+p {
+  font-family: 'Open Sans';
+  font-weight: normal;
+  color: #333;
+  line-height: 23 px;
+  
+  a {
+    font-style: bold;
+	color: #009FE3;
+  }
+}
+
+small {
+  font-family: 'Open Sans';
+  font-size: 12px;
+  line-height: 20px;
+  color: #555;
+}
+
+body {
+  background: $blue;
+}
+
+.main {
+  background: #fff;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+}
+
+.content {
+  padding: 10px;
+}
+
+.sidebar {
+  padding: 10px;
+}
+
+//overwritten bootstrap definitions
+
+.navbar-inverse .brand:hover,
+.navbar-inverse .nav > li > a:hover {
+  color: $yellow;
+}
+
+.navbar-inverse .nav > li > a:focus,
+.navbar-inverse .nav > li > a:hover {
+  background-color: transparent;
+  color: $yellow;
 }
