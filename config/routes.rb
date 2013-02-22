@@ -4,6 +4,8 @@ Fruitback::Application.routes.draw do
   
   devise_for :users
   
+  resources :users
+  
   resources :micro_sites
   
   resources :sites do

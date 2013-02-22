@@ -15,7 +15,16 @@
                 %i.icon-home.icon-white
                 Home
             
-            %li= link_to "Sites", sites_path
+            -if admin?
+              %li= link_to "All sites", sites_path
+              
+              %li= link_to "All users", users_path
+              
+            -elsif customer?
+              %li= link_to "My sites", sites_path
+              
+            -elsif logged_in?
+              %li= link_to "Sites I posted on", sites_path
             
             %li
               - if user_signed_in?
@@ -23,5 +32,6 @@
               - else
                 = link_to 'Login', new_user_session_path
                 
-          - if current_user
-            %p.logged-in= "Logged in as #{current_user.email}" 
+          - if logged_in?
+            %p.logged-in= "Logged in as #{current_user.name}" 
+            
