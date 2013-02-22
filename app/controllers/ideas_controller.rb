@@ -28,7 +28,6 @@ class IdeasController < ApplicationController
   
   def create
     
-    # Log in Anonymous user if not logged in, in order to be able to create an idea
     if !logged_in?
       user = User.new name: "Anonymous"
       user.save
@@ -43,8 +42,7 @@ class IdeasController < ApplicationController
     @site.save
     super do |format|
       format.html {
-        redirect_to site_ideas_path(@site),
-        notice: "Idea was successfully created. You have 5 minutes left to edit it."
+        redirect_to site_ideas_path(@site)
       }
     end
   end
