@@ -1,18 +1,20 @@
 !!!
 %html
   %head
+    = render 'layouts/shim'
     %title Fruitback
-    = stylesheet_link_tag    "application", :media => "all"
-    = javascript_include_tag "application"
-    = csrf_meta_tags
-  %body     
-              
-    .container
-      - if notice
-        %div.alert.alert-success
-          = notice
-          - #%a.close{"data-dismiss" => "alert", :href => "#"} &times;
-      - if alert
-        %p.alert.alert-error= alert
+  
+  %body.micro
+    %div.container
+      %div.container-fluid.main
+        %div.row-fluid
         
-      = yield
+          %div.span4
+            %div.content
+              = yield
+          
+          %div.span8
+            %div.sidebar
+              = render 'layouts/alert'
+              = yield :sidebar
+          

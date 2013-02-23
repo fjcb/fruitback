@@ -2,7 +2,30 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+$light_gray: #B1B1B1;
+
 .scrollable {
   overflow-y: scroll;
-  height: 500px;
 }
+
+body.micro {
+  width: 800px;
+  height: 500px;
+  
+  .main {
+  }
+  
+  .content {
+    padding: 0;
+    overflow-y: scroll;
+    height: 460px;
+    padding: 20px;
+  }
+  
+  .sidebar {
+    padding: 0px;
+  }
+
+  
+}
+

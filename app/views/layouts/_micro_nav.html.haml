@@ -1,0 +1,33 @@
+.container
+  .navbar.navbar-inverse
+    .navbar-inner
+      .container
+        %a.brand{:href => root_path}
+          fruitback micro
+        .nav-collapse
+          %ul.nav.nav_custom
+            %li{:class => "#{'active' if current_page?(root_path)}"}
+              =link_to root_path do
+                %i.icon-home.icon-white
+                Home
+            
+            -if admin?
+              %li= link_to "All sites", sites_path
+              
+              %li= link_to "All users", users_path
+              
+            -elsif customer?
+              %li= link_to "My sites", sites_path
+              
+            -elsif logged_in?
+              %li= link_to "Sites I posted on", sites_path
+            
+            %li
+              - if user_signed_in?
+                = link_to 'Logout', destroy_user_session_path, :method => :delete
+              - else
+                = link_to 'Login', new_user_session_path
+                
+          - if logged_in?
+            %p.logged-in= "Logged in as #{current_user.name}" 
+            
