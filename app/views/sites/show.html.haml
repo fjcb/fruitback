@@ -2,7 +2,7 @@
   %h1= @site.name
   
   - if @site.user
-    %p= "Owner: #{ @site.user.email }"
+    %p= "Owner: #{ @site.user.name }"
   
   - if can? :update, @site
     %h2 Change site

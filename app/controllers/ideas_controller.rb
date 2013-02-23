@@ -1,6 +1,7 @@
 class IdeasController < ApplicationController
   
   inherit_resources
+  load_and_authorize_resource
   
   def show
     @idea = Idea.find(params[:id])

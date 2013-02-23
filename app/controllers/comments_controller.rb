@@ -1,6 +1,7 @@
 class CommentsController < ApplicationController
   
   inherit_resources
+  load_and_authorize_resource
   
   def update
     @idea = Idea.find(params[:idea_id])
@@ -13,6 +14,11 @@ class CommentsController < ApplicationController
   end
   
   def create
+    if !logged_in?
+      user = User.new name: "Anonymous"
+      user.save
+      sign_in(user)
+    end
     
     @comment = Comment.new(params[:comment])
     @comment.user = current_user

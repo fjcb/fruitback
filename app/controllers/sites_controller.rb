@@ -1,8 +1,10 @@
 class SitesController < ApplicationController
   
   inherit_resources
+  load_and_authorize_resource
   
   def index
+    
     @site = Site.new
     if admin?
       @sites = Site.all

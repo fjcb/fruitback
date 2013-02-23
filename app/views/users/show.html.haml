@@ -5,3 +5,7 @@
   
 -else
   %h1= @user.name
+  %p Post score: ?
+  
+-if admin?
+  = render 'form'

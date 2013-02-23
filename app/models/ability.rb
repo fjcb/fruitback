@@ -33,12 +33,15 @@ class Ability
     
     # EVERYBODY
     
+    can :update, User, id: user.id
+    
     can :create, Idea
     can :create, Comment
     
     can :read, Site
     can :read, Idea
     can :read, Comment
+    can :read, User
     
     # Define abilities for the passed in user here. For example:
     #

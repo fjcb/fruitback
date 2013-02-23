@@ -3,19 +3,19 @@
   %head
     %title Fruitback
     = render 'layouts/shim'
-  %body{ "onLoad" => "$('.alert').alert()" }
+  %body
     %div.container
       %div.header
         = render 'layouts/app_header'
-          
         = render 'layouts/app_nav'
+      
       %div.main.container-fluid  
         %div.row-fluid
           %div.span12  
-                
             = render 'layouts/alert'
           
             %div.row-fluid
+            
               %div.span8
                 %div.content
                   = yield
@@ -23,6 +23,5 @@
               %div.span4  
                 %div.sidebar
                   = yield :sidebar
-          
-            
+
   = render 'layouts/app_footer'
