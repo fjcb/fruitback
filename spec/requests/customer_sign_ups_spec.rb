@@ -15,15 +15,11 @@ describe "CustomerSignUps" do
       
       click_on "Sign up"
       
-      User.find_by_email(email).customer.should == true;   
-    end  
-    
-    it "site should show sites-overview" do
-      visit new_user_registration_path
+      User.find_by_email(email).customer.should == true;
       
-      page.should have_selector "h1", text: "sites"
-    end
-   
+      page.should have_content "sites"     
+    end  
+  
   end
   
 end
