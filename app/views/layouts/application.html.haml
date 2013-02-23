@@ -5,7 +5,7 @@
     = render 'layouts/shim'
   %body
     %div.container
-      %div.header
+      %div.container         
         = render 'layouts/app_nav'
       
       %div.main.container-fluid  
@@ -23,4 +23,4 @@
                 %div.sidebar
                   = yield :sidebar
 
-  = render 'layouts/app_footer'
+    = render 'layouts/app_footer'
