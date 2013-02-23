@@ -25,4 +25,12 @@ class ApplicationController < ActionController::Base
     !current_user.try(:email)
   end
   
+  def after_sign_in_path_for(resource_or_scope)
+    if resource_or_scope.is_a?(User)
+      sites_path
+    else
+      super
+    end
+  end
+  
 end
