@@ -1,12 +1,8 @@
-.container
+.container.header
   .navbar.navbar-inverse
     .navbar-inner
       .container
-        %a.btn.btn-navbar{"data-target" => ".nav-collapse", "data-toggle" => "collapse"}
-          %span.icon-bar
-          %span.icon-bar
-          %span.icon-bar
-        %a.brand{:href => root_path}
+        %a.brand.logo{:href => root_path}
           = image_tag 'logo.png'
         .nav-collapse
           %ul.nav.nav_custom
@@ -16,17 +12,21 @@
                 Home
             
             -if admin?
-              %li= link_to "All sites", sites_path
+              %li{:class => "#{'active' if current_page?(sites_path)}"}
+                = link_to "All sites", sites_path
               
-              %li= link_to "All users", users_path
+              %li{:class => "#{'active' if current_page?(users_path)}"}
+                = link_to "All users", users_path
               
             -elsif customer?
-              %li= link_to "My sites", sites_path
+              %li{:class => "#{'active' if current_page?(sites_path)}"}
+                = link_to "My sites", sites_path
               
             -elsif logged_in?
-              %li= link_to "Sites I posted on", sites_path
+              %li{:class => "#{'active' if current_page?(sites_path)}"}
+                = link_to "Sites I posted on", sites_path
             
-            %li
+            %li{:class => "#{'active' if current_page?(new_user_session_path)}"}
               - if user_signed_in?
                 = link_to 'Logout', destroy_user_session_path, :method => :delete
               - else

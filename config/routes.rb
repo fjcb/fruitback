@@ -18,7 +18,11 @@ Fruitback::Application.routes.draw do
   
   end
   
-  match ':sites/:id/widget' => 'sites#widget'
+  match ':sites/:id/widget', to: 'sites#widget'
+  
+  match '/about', to: 'static_pages#about'
+  
+  match '/help', to: 'static_pages#help'
   
   
   # The priority is based upon order of creation:
