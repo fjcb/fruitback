@@ -4,8 +4,9 @@ class MicroSitesController < ApplicationController
   
   def show
     @site = Site.find(params[:id])
-    @ideas = @site.ideas
+    @ideas = @site.ideas.limit(15)
     @idea = Idea.new
+    @user = User.new
   end
   
 end

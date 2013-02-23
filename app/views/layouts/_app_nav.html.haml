@@ -22,7 +22,7 @@
               %li{:class => "#{'active' if current_page?(sites_path)}"}
                 = link_to "My sites", sites_path
               
-            -elsif logged_in?
+            -elsif user_signed_in?
               %li{:class => "#{'active' if current_page?(sites_path)}"}
                 = link_to "Sites I posted on", sites_path
             
@@ -32,6 +32,6 @@
               - else
                 = link_to 'Login', new_user_session_path
                 
-          - if logged_in?
+          - if user_signed_in?
             %p.logged-in= "Logged in as #{current_user.name}" 
             

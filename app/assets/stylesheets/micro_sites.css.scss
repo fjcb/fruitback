@@ -4,26 +4,28 @@
 
 $light_gray: #B1B1B1;
 
-.scrollable {
-  overflow-y: scroll;
-}
-
 body.micro {
   width: 800px;
   height: 500px;
   
+
+  // BOOTSTRAP OVERWRITES
+  .container{
+    width: 800px;
+  }
+  
   .main {
   }
   
+  
   .content {
-    padding: 0;
     overflow-y: scroll;
     height: 460px;
-    padding: 20px;
+    padding: 20px 20px 20px 0;
   }
   
   .sidebar {
-    padding: 0px;
+    padding: 20px 0 20px 20px;
   }
 
   

@@ -25,8 +25,4 @@ class ApplicationController < ActionController::Base
     !current_user.try(:email)
   end
   
-  def logged_in?
-    !!current_user
-  end
-  
 end

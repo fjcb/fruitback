@@ -2,7 +2,10 @@
   %h1= @site.name
   
   - if can? :create, @idea
-    = render 'ideas/form'
+    = render 'form'
+    
+    email
+    username
 
   
 %h2 Ideas

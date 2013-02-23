@@ -9,12 +9,12 @@
       %div.container-fluid.main
         %div.row-fluid
         
-          %div.span4
-            %div.content
-              = yield
-          
           %div.span8
             %div.sidebar
               = render 'layouts/alert'
               = yield :sidebar
+          
+          %div.span4
+            %div.content
+              = yield
           
