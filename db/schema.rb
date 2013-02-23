@@ -62,7 +62,7 @@ ActiveRecord::Schema.define(:version => 20130222153010) do
     t.datetime "updated_at",                                :null => false
     t.boolean  "admin",                  :default => false, :null => false
     t.boolean  "customer",               :default => false, :null => false
-    t.string   "name",                   :default => "",    :null => false
+    t.string   "name"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

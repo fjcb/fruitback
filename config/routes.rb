@@ -6,7 +6,11 @@ Fruitback::Application.routes.draw do
   
   resources :users
   
-  resources :micro_sites
+  resources :micro_sites do 
+    
+    resources :micro_ideas
+    
+  end
   
   resources :sites do
     

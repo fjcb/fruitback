@@ -1,7 +1,7 @@
 class SitesController < ApplicationController
   
   inherit_resources
-  load_and_authorize_resource
+  load_and_authorize_resource except: :widget
   
   def index
     
@@ -10,7 +10,7 @@ class SitesController < ApplicationController
       @sites = Site.all
     elsif customer?
       @sites = Site.where(user_id: current_user)
-    elsif logged_in?
+    elsif user_signed_in?
       # Sites that own one of my ideas or comments
       @sites = []
       current_user.comments.each { |comment|

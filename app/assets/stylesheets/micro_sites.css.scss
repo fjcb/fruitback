@@ -2,12 +2,16 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+$yellow: #FAE117;
+$blue: #009FE3;
+$light_blue: #EFFFFF;
 $light_gray: #B1B1B1;
+$dark_gray: #333333;
 
 body.micro {
   width: 800px;
-  height: 500px;
-  
+  min-height: 500px;
+  height: 500px;  
 
   // BOOTSTRAP OVERWRITES
   .container{
@@ -17,14 +21,37 @@ body.micro {
   .main {
   }
   
-  
-  .content {
-    overflow-y: scroll;
-    height: 460px;
-    padding: 20px 20px 20px 0;
+  .well {
+    border-color: #90CFFF;
+    background-color: $light_blue;
+    padding: 0;
+    margin-bottom: 5px;
+    
+    &:hover {
+      background-color: #fff;
+    }
+    
+    a {
+      display: block;
+      padding: 5px;
+      color: #08C;
+      
+      &:hover {
+        color: #08C;
+        text-decoration: none;
+      }
+    }
   }
   
-  .sidebar {
+  .ideas {
+    //overflow-y: scroll;
+    height: 460px;
+    min-height: 460px;
+    padding: 20px 20px 20px 20px;
+    background-color: $light_blue;
+  }
+  
+  .content {
     padding: 20px 0 20px 20px;
   }
 

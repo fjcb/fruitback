@@ -2,14 +2,14 @@
 = simple_form_for [@site, @idea], url: @form_url do |f|
   = f.error_notification
   
-  %div.form-inputs
-    = f.input :title, required: true
-    = f.input :description, as: :text, input_html: { rows: 5 }, required: true
-    
-    - if !user_signed_in?
-      = simple_fields_for @user do |u|
-        = u.input :email, placeholder: "Your email address", required: true
-    
-  %div.form-actions
-    = f.button :submit
+  = f.input :title, required: true
+  = f.input :description, as: :text, input_html: { rows: 5 }, required: true
   
+  - if !user_signed_in?
+    = simple_fields_for @user do |u|
+      = u.input :email, placeholder: "Your email address"#, required: true
+  - else
+    Signed in as
+    = current_user.name
+  
+  = f.button :submit, :class => "btn btn-success"

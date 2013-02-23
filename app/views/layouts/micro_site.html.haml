@@ -9,12 +9,16 @@
       %div.container-fluid.main
         %div.row-fluid
         
-          %div.span8
-            %div.sidebar
-              = render 'layouts/alert'
-              = yield :sidebar
-          
-          %div.span4
+          %div.span7
             %div.content
+              - if notice
+                %div.alert.alert-success= notice
+              - if alert
+                %div.alert.alert-error= alert
+                
               = yield
+          
+          %div.span5
+            %div.ideas
+              = yield :sidebar
           

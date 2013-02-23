@@ -29,7 +29,7 @@ class IdeasController < ApplicationController
   
   def create
     
-    if !logged_in?
+    if !user_signed_in?
       user = User.new name: "Anonymous"
       user.save
       sign_in(user)
