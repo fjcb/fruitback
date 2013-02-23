@@ -2,6 +2,8 @@ Fruitback::Application.routes.draw do
 
   root to: "static_pages#home"
   
+  match ':users/check', to: 'users#check'
+  
   devise_for :users
   
   resources :users

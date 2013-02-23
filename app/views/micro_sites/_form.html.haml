@@ -2,14 +2,16 @@
 = simple_form_for [@site, @idea], url: @form_url do |f|
   = f.error_notification
   
-  = f.input :title, required: true
-  = f.input :description, as: :text, input_html: { rows: 5 }, required: true
+  = f.input :title, required: true, input_html: { class: "input-xlarge" }
+  = f.input :description, as: :text, input_html: { class: "input-xlarge", rows: 5 }, required: true
   
   - if !user_signed_in?
     = simple_fields_for @user do |u|
-      = u.input :email, placeholder: "Your email address"#, required: true
+      = u.input :email, placeholder: "Your email address", input_html: { class: "input-xlarge" }
+      = u.input :password, input_html: { class: "input-xlarge" }
   - else
-    Signed in as
-    = current_user.name
+    %p
+      Signed in as
+      = current_user.name
   
-  = f.button :submit, :class => "btn btn-success"
+  = f.button :submit, "Post idea", :class => "btn btn-success"

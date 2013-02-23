@@ -1,19 +1,27 @@
 
-%h1= @site.name
+%h1 Post a new idea
 
 - if can? :create, @idea
   = render 'form'
 
 
 - content_for :sidebar do
-  %h1 Ideas
+  %h1 Browse ideas
   
   - @ideas.each do |idea|
-    %div.well
+    %div.idea
       %a{:href => site_idea_path(@site, idea)}
-        %div
+        %div.title
           = idea.title
-        %div
-          = idea.user.name
+        %div.info
+          %span.label.label-important Refused
+          &nbsp;&middot;&nbsp;
+          score:
+          %span.badge= idea.score
+          &nbsp;&middot;&nbsp;
+          = idea.comments.count
+          comments
+          
+        
     
     = #link_to site_idea_path(@site, idea)
