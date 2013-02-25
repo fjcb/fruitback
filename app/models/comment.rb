@@ -7,4 +7,6 @@ class Comment < ActiveRecord::Base
   belongs_to :idea
   attr_accessible :idea_id
   
+  validates :text, presence: true, length: { maximum: 1000 }, on: :save
+  
 end
