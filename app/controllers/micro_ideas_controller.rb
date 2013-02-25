@@ -11,10 +11,15 @@ class MicroIdeasController < ApplicationController
   def create
     
     if !user_signed_in?
-      user = User.new(params[:user])
-      user.name = "Anonymous" if !user.name
-      user.save
-      sign_in(user)
+      user = User.find_by_email(params[:user][:email])
+      if user
+        sign_in(user)
+      else
+        user = User.new(params[:user])
+        user.name = "Anonymous" if !user.name
+        user.save
+        sign_in(user)
+      end
     end
     
     @idea = Idea.new(params[:idea])

@@ -9,9 +9,14 @@
     = simple_fields_for @user do |u|
       = u.input :email, placeholder: "Your email address", input_html: { class: "input-xlarge" }
       = u.input :password, input_html: { class: "input-xlarge" }
+      = u.input :name, input_html: { class: "input-xlarge" }
   - else
     %p
       Signed in as
       = current_user.name
   
   = f.button :submit, "Post idea", :class => "btn btn-success"
+
+
+%script
+  = render "check_email.js"
