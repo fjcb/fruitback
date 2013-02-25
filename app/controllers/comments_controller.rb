@@ -15,20 +15,20 @@ class CommentsController < ApplicationController
   
   def create
     
-    if !user_signed_in?
-      user = User.new name: "Anonymous"
-      user.save
-      sign_in(user)
+    @site = Site.find(params[:site_id])
+    @idea = Idea.find(params[:idea_id])
+    
+    if !login
+      redirect_to site_idea_path(@site, @idea), alert: "Wrong email/password."
+      return
     end
     
     @comment = Comment.new(params[:comment])
     @comment.user = current_user
     
-    @idea = Idea.find(params[:idea_id])
     @idea.comments.push @comment
     @idea.save
     
-    @site = Site.find(params[:site_id])
     super do |format|
       format.html {
         redirect_to site_idea_path(@site, @idea)

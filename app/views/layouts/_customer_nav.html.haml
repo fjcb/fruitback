@@ -4,8 +4,8 @@
       .container
         %a.brand.logo{:href => root_path}
           = image_tag 'logo.png'
-        .nav-collapse
-          %ul.nav.nav_custom
+        .nav-collapse.nav_custom
+          %ul.nav
             %li{:class => "#{'active' if current_page?(root_path)}"}
               =link_to root_path do
                 %i.icon-home.icon-white
@@ -33,5 +33,7 @@
                 = link_to 'Login', new_user_session_path
                 
           - if user_signed_in?
-            %p.logged-in= "Logged in as #{current_user.name}" 
+            %p.logged-in
+              Logged in as
+              = link_to current_user.name, user_path(current_user)
             

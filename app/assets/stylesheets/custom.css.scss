@@ -126,6 +126,15 @@ body {
   color: #999;
 }
 
+.logged-in {
+  a {
+    color: $yellow;
+    &:hover {
+      color: $yellow;
+    }
+  }
+}
+
 
 // BOOTSTRAP OVERWRITES
 
@@ -144,8 +153,8 @@ body {
   }
 }
 
-.navbar .nav {
-  //margin-top: 15px;
+.nav_custom {
+  margin-top: 15px;
 }
 
 .navbar-inverse .brand:hover,

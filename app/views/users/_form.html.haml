@@ -2,9 +2,7 @@
 = simple_form_for(@user) do |f|
   = f.error_notification
   
-  %div.form-inputs
-    = f.input :name, required: true
-    = f.input :email, required: true
-  
-  %div.form-actions
-    = f.button :submit
+  = f.input :name, required: true
+  = f.input :email, required: true
+
+  = f.button :submit, class: "btn btn-success"

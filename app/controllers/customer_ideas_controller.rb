@@ -1,7 +1,7 @@
 class CustomerIdeasController < ApplicationController
 
   inherit_resources
-  load_and_authorize_resource :idea
+  authorize_resource :idea, parent: false
   
   defaults :resource_class => Idea,
     :collection_name => 'ideas',

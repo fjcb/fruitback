@@ -1,6 +1,8 @@
 
 %ul
   %li
-    = link_to "Idea", site_path(@site)
+    = link_to "Ideas overview", customer_site_path(@site)
+  %li
+    = link_to "See this site as a visitor", site_path(@site), target: "_blank"
   %li
     = link_to "Settings", edit_customer_site_path(@site)

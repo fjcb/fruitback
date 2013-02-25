@@ -25,6 +25,7 @@ class SitesController < ApplicationController
         end
       }
     end
+    
     super
   end
   

@@ -5,12 +5,14 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+if Rails.env.development?
+  #FactoryGirl.create(:admin)
+  #FactoryGirl.create(:comment)
+  #FactoryGirl.create(:comment)
+  
+  FactoryGirl.create(:site)
+  FactoryGirl.create(:site)
+end
 
-FactoryGirl.create(:admin)
-
-#FactoryGirl.create(:comment)
-#FactoryGirl.create(:comment)
-
-FactoryGirl.create(:site)
-#FactoryGirl.create(:site)
-
+User.create name: "Fritz Jacob", email: "fjacob@tzi.de", password: "adminadmin", admin: true
+User.create name: "Robert Kuhfss", email: "kuhfss@tzi.de", password: "adminadmin", admin: true
