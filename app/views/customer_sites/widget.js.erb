@@ -2,7 +2,7 @@
 <% color = "FAE117" %> 
 var button_css = "<%= (render partial: 'widgets/button_css', locals: { position: button_position(7), color: color } ).delete("\n") %>";
 var iframe_css = "<%= (render 'widgets/iframe_css').delete("\n") %>";
-var html_button = "<h1 style=\"color: #eee; margin: 10px\">F</h1>";
+var html_button = "<img src=\"<%= logo_url %>\" style=\"margin-top: -20px;\">";
 var html_iframe = "<%= (render partial: 'widgets/iframe.html', locals: { site: @site, color: color } ).delete("\n").html_safe %>";
 
 var button = 'button';

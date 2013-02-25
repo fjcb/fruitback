@@ -1,9 +1,13 @@
 module SitesHelper
   
+  def logo_url
+    root_url + "/logo_mini.png"
+  end
+  
   def button_position id
     
     x = 100
-    y = 50
+    y = 60
     offset = 10
     half_x = x / 2;
     
