@@ -1,0 +1,8 @@
+
+= simple_form_for [@site, @idea], url: @form_url do |f|
+  = f.error_notification
+  
+  = f.input :title, required: true
+  = f.input :description, as: :text, input_html: { rows: 5 }, required: true
+
+  = f.button :submit, class: "btn btn-success"
