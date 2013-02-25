@@ -2,10 +2,9 @@
 = simple_form_for [@site, @idea], url: @form_url do |f|
   = f.error_notification
   
-  %div.form-inputs
-    = f.input :title, required: true
-    = f.input :description, as: :text, input_html: { rows: 5 }, required: true
-  
-  %div.form-actions
-    = f.button :submit
-  
+  = f.input :title, required: true
+  = f.input :description, as: :text, input_html: { rows: 5 }, required: true
+
+  TODO: Widget-Login
+
+  = f.button :submit, class: "btn btn-success"

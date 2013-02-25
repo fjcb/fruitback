@@ -1,5 +1,7 @@
 - if notice
-  %div.alert.alert-success.alert-custom
+  %div.alert.alert-success.alert-custom.fade.in
+    %button.close{"data-dismiss" => "alert", :type => "button"}
+      &times;
     = notice
     - #%a.close{"data-dismiss" => "alert", :href => "#"} &times;
 - if alert
