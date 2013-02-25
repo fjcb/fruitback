@@ -49,12 +49,18 @@ class CustomerSitesController < ApplicationController
     super
   end
   
+  def edit
+    @site = Site.find(params[:id])
+    @form_url = customer_site_path(@site)
+    super
+  end
+  
   def update
     @site = Site.find(params[:id])
     @site.update_attributes(params[:site])
     super do |format|
       format.html {
-        redirect_to customer_site_path(@site)
+        redirect_to edit_customer_site_path(@site)
       }
     end
   end

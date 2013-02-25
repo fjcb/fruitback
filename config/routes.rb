@@ -4,7 +4,10 @@ Fruitback::Application.routes.draw do
   
   match ':users/check', to: 'users#check'
   
-  devise_for :users, controllers: { registrations: "registrations", sessions: "sessions" }
+  devise_for :users, controllers: {
+    registrations: "registrations",
+    passwords: "passwords",
+    sessions: "sessions" }
   
   resources :users
   
