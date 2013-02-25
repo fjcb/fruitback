@@ -1,0 +1,24 @@
+!!!
+%html
+  %head
+    %title 
+      = "#{@site.name}"
+    = render 'layouts/shim'
+  %body.customer
+    %div.container
+      %div.container.spacer
+      
+      %div.container-fluid.main
+        %div.row-fluid
+        
+          %div.span8
+            %div.content
+              = render 'layouts/alert'
+              = yield
+            
+          %div.span4
+            %div.sidebar
+              = yield :sidebar
+              
+
+    = render 'layouts/app_footer'
