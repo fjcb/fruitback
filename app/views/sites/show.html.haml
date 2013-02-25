@@ -1,8 +1,15 @@
+- #customer view
 - content_for :sidebar do
   %h1= @site.name
   
   - if @site.user
     %p= "Owner: #{ @site.user.name }"
+    
+  %ul
+    %li
+      = link_to "Ideas", site_ideas_path(@site)
+    %li
+      = link_to "Settings", edit_site_path(@site) 
   
   - if can? :update, @site
     %h2 Change site
