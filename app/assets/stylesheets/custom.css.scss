@@ -9,14 +9,6 @@ $dark_gray: #333333;
 //
 
 
-// BOOTSTRAP OVERWRITES
-
-.container-fluid {
-  padding-left: 0;
-  padding-right: 0;
-}
-
-
 // CUSTOM
 
 p.logged-in {
@@ -117,7 +109,24 @@ body {
   margin-top: -55px;
 }
 
-//overwritten bootstrap definitions
+
+
+// BOOTSTRAP OVERWRITES
+
+.container-fluid {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.boolean {
+  input {
+    margin-bottom: 4px;
+  }
+  label {
+    display: inline-block;
+    margin-left: 5px;
+  }
+}
 
 .navbar-inverse .brand:hover,
 .navbar-inverse .nav > li > a:hover {
