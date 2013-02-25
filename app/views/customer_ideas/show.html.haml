@@ -7,11 +7,11 @@
 
   %p
     It belongs to site:
-    = @idea.site.name
+    = link_to @idea.site.name, customer_site_path(@idea.site)
   
   %p
     posted by:
-    = @idea.user.name
+    = link_to @idea.user.name, @idea.user
   
   %small.text-right.muted
     created @
@@ -21,10 +21,6 @@
       and edited @
       = @idea.updated_at
 
-- if can? :update, @idea
-  %h2 Edit idea
-  = render 'form'
-
 -if !@idea.comments.empty?
   %h2 Comments
   - @idea.comments.each do |comment|
@@ -33,6 +29,6 @@
 - content_for :sidebar do
   - if can? :create, @comment
     %h3 Add comment
-    = render 'comments/form', url: site_idea_comments_path(@site, @idea)
+    = render 'comments/form', url: customer_site_customer_idea_customer_comments_path(@site, @idea)
     
   = render 'customer_sites/sidebar'

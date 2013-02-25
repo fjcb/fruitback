@@ -1,5 +1,5 @@
 
-= simple_form_for [@site, @idea, @comment], url: @url do |f|
+= simple_form_for [@site, @idea, @comment], url: url do |f|
   = f.error_notification
   
   = f.input :text, required: true, as: :text, input_html: { rows: 5, class: "input-xlarge" }, placeholder: "Enter your comment here", label: false

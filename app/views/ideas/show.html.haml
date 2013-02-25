@@ -6,11 +6,11 @@
 
   %p
     It belongs to site:
-    = @idea.site.name
+    = link_to @idea.site.name, @idea.site
   
   %p
     posted by:
-    = @idea.user.name
+    = link_to @idea.user.name, @idea.user
   
   %small.text-right.muted
     created @
@@ -19,10 +19,6 @@
     - if @idea.edited?
       and edited @
       = @idea.updated_at
-
-- if can? :update, @idea
-  %h2 Edit idea
-  = render 'form'
 
 -if !@idea.comments.empty?
   %h2 Comments

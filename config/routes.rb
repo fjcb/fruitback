@@ -13,7 +13,11 @@ Fruitback::Application.routes.draw do
   
   resources :customer_sites do
     
-    resources :customer_ideas
+    resources :customer_ideas do
+      
+      resources :customer_comments
+      
+    end
     
   end
   

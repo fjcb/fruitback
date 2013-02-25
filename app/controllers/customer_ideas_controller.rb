@@ -15,9 +15,9 @@ class CustomerIdeasController < ApplicationController
     @idea = Idea.find(params[:id])
     @site = @idea.site
     @customer = User.find(@site.user.id)
-    @customer_sites = Site.where(user_id: @customer.id)
-    @form_url = site_idea_path(@site, @idea)
     @comment = Comment.new
+    
+    #@form_url = site_idea_path(@site, @idea)
     super
   end
 end

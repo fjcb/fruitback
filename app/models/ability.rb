@@ -27,7 +27,7 @@ class Ability
       # VISITOR
       
       # edit own ideas
-      can :update, Idea, user: user, editable?: true
+      #can :update, Idea, user: user, editable?: true
     
     end
     

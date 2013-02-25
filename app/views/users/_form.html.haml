@@ -1,8 +1,10 @@
 
-= simple_form_for(@user) do |f|
+= simple_form_for @user do |f|
   = f.error_notification
-  
+
   = f.input :name, required: true
   = f.input :email, required: true
+  = f.input :password, required: false, :autocomplete => "off"
+  = f.input :password_confirmation, required: false
 
-  = f.button :submit, class: "btn btn-success"
+  = f.button :submit, "Update profile", class: "btn btn-success"
