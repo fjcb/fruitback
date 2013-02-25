@@ -23,7 +23,6 @@ class CustomerSitesController < ApplicationController
     end
     
     @form_url = customer_sites_path
-    
     super
   end
   
@@ -31,7 +30,11 @@ class CustomerSitesController < ApplicationController
     @site = Site.new(params[:site])
     @site.user = current_user
     @site.save
-    super
+    super do |format|
+      format.html {
+        redirect_to customer_site_path(@site)
+      }
+    end
   end
   
   def show
@@ -41,7 +44,19 @@ class CustomerSitesController < ApplicationController
     
     @ideas = @site.ideas
     @idea = Idea.new
+    
+    @form_url = customer_site_path(@site)
     super
+  end
+  
+  def update
+    @site = Site.find(params[:id])
+    @site.update_attributes(params[:site])
+    super do |format|
+      format.html {
+        redirect_to customer_site_path(@site)
+      }
+    end
   end
   
   def widget
