@@ -15,4 +15,8 @@ class User < ActiveRecord::Base
   
   has_many :comments
   
+  def visitor?
+    !admin? && !customer?
+  end
+  
 end

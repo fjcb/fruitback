@@ -10,10 +10,22 @@ class MicroIdeasController < ApplicationController
   
   def create
     
+    @site = Site.find(params[:micro_site_id])
+    
     if !user_signed_in?
+      # Try to log in existing user
       user = User.find_by_email(params[:user][:email])
       if user
-        sign_in(user)
+        if user.valid_password?(params[:user][:password])
+          sign_in(user)
+        else
+          respond_to do |format|
+            format.html {
+              redirect_to micro_site_path(@site), alert: "Wrong email/password."
+              return
+            }
+          end
+        end
       else
         user = User.new(params[:user])
         user.name = "Anonymous" if !user.name
@@ -25,7 +37,6 @@ class MicroIdeasController < ApplicationController
     @idea = Idea.new(params[:idea])
     @idea.user = current_user
     
-    @site = Site.find(params[:micro_site_id])
     @site.ideas.push @idea
     @site.save
     super do |format|

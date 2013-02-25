@@ -7,13 +7,12 @@
   
   - if !user_signed_in?
     = simple_fields_for @user do |u|
-      = u.input :email, placeholder: "Your email address", input_html: { class: "input-xlarge" }
-      = u.input :password, input_html: { class: "input-xlarge" }
-      = u.input :name, input_html: { class: "input-xlarge" }
+      = u.input :email, input_html: { class: "input-xlarge" }, placeholder: "Enter your idea here", label: false
+      = u.input :password, input_html: { class: "input-xlarge" }, placeholder: "Describe your idea", label: false
+      = u.input :name, input_html: { class: "input-xlarge" }, placeholder: "Your name", label: false
   - else
-    %p
-      Signed in as
-      = current_user.name
+    %p.info= "Signed in as #{current_user.name} <#{current_user.email}>"
+  
   
   = f.button :submit, "Post idea", :class => "btn btn-success"
 

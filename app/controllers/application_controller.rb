@@ -15,7 +15,7 @@ class ApplicationController < ActionController::Base
   end
   
   def visitor?
-    !admin? && !customer?
+    current_user.try(:visitor?)
   end
   
   def admin?
@@ -30,18 +30,11 @@ class ApplicationController < ActionController::Base
     !current_user.try(:email)
   end
   
-  def after_sign_in_path_for(resource_or_scope)
-    if resource_or_scope.is_a?(User)
+  def after_sign_in_path_for(user)
+    if user.visitor?
       sites_path
     else
       super
     end
   end
-  
-  def after_sign_up_path_for(resource_or_scope)
-    current_user.customer = true;
-    current_user.save
-    super
-  end 
-  
 end
