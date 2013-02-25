@@ -1,0 +1,5 @@
+%h2 
+  = "#{@customer.name}"
+%ul
+  - @customer_sites.each do |site|
+    %li= link_to site.name, customer_site_path(site.id)

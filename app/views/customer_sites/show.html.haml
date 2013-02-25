@@ -1,0 +1,17 @@
+%h1= @site.name
+%h2 Ideas
+
+%table.table.table-hover.table-bordered
+  %tbody
+    - @ideas.each do |idea|
+      %tr
+        %td= link_to idea.title, customer_site_customer_idea_path(@site, idea)
+
+- content_for :sidebar do
+  %h2 Post a new idea
+  TODO: FORMULAR WIDGET
+  
+  = render 'customer_sidebar'
+    
+  
+  

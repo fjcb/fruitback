@@ -1,0 +1,38 @@
+%h1= @site.name
+%h2= @idea.title
+
+%div.well
+  %p
+    = @idea.description
+
+  %p
+    It belongs to site:
+    = @idea.site.name
+  
+  %p
+    posted by:
+    = @idea.user.name
+  
+  %small.text-right.muted
+    created @
+    = @idea.created_at
+  
+    - if @idea.edited?
+      and edited @
+      = @idea.updated_at
+
+- if can? :update, @idea
+  %h2 Edit idea
+  = render 'form'
+
+-if !@idea.comments.empty?
+  %h2 Comments
+  - @idea.comments.each do |comment|
+    = render 'comments/comment', comment: comment
+
+- content_for :sidebar do
+  - if can? :create, @comment
+    %h3 Add comment
+    = render 'comments/form', url: site_idea_comments_path(@site, @idea)
+    
+  = render 'customer_sites/customer_sidebar'
