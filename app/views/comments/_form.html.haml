@@ -10,7 +10,7 @@
       = u.input :password, input_html: { class: "input-xlarge" }, placeholder: "fruitback password", label: false
       = u.input :name, input_html: { class: "input-xlarge" }, placeholder: "Your name", label: false
   - else
-    %p.info= "Signed in as #{current_user.name} <#{current_user.email}>"
+    %p.info= "Signed in as #{current_user.name}"
 
   = f.button :submit, class: "btn btn-success"
 

@@ -9,7 +9,6 @@ class SitesController < ApplicationController
   
   def index
     
-    
     if user_signed_in?
       # Sites that own one of my ideas or comments
       @sites = []
@@ -35,6 +34,7 @@ class SitesController < ApplicationController
     @customer_sites = Site.where(user_id: @customer.id)
     @ideas = @site.ideas
     @idea = Idea.new
+    @user = User.new
     super
   end
   

@@ -9,14 +9,7 @@ class IdeasController < ApplicationController
     #@site = Site.find(params[:site_id])
     @form_url = site_idea_path(@site, @idea)
     @comment = Comment.new
-    super
-  end
-  
-  def index
-    @site = Site.find(params[:site_id])
-    @idea = Idea.new
-    @ideas = @site.ideas
-    @form_url = site_ideas_path(@site)
+    @user = User.new
     super
   end
   
@@ -29,21 +22,38 @@ class IdeasController < ApplicationController
   
   def create
     
+    @site = Site.find(params[:site_id])
+    
     if !user_signed_in?
-      user = User.new name: "Anonymous"
-      user.save
-      sign_in(user)
+      # Try to log in existing user
+      user = User.find_by_email(params[:user][:email])
+      if user
+        if user.valid_password?(params[:user][:password])
+          sign_in(user)
+        else
+          respond_to do |format|
+            format.html {
+              redirect_to micro_site_path(@site), alert: "Wrong email/password."
+              return
+            }
+          end
+        end
+      else
+        user = User.new(params[:user])
+        user.name = "Anonymous" if !user.name
+        user.save
+        sign_in(user)
+      end
     end
     
     @idea = Idea.new(params[:idea])
     @idea.user = current_user
     
-    @site = Site.find(params[:site_id])
     @site.ideas.push @idea
     @site.save
     super do |format|
       format.html {
-        redirect_to site_ideas_path(@site)
+        redirect_to site_idea_path(@site, @idea)
       }
     end
   end
