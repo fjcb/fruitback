@@ -1,8 +1,4 @@
 %h1= @site.name
-%p
-  Owner: 
-  = @site.user.name
-
 %h2 Ideas
 
 %table.table.table-hover.table-bordered
@@ -12,8 +8,5 @@
         %td= link_to idea.title, site_idea_path(@site, idea)
 
 - content_for :sidebar do
-  = render "sidebar_header"
-  - if visitor?
-    - if can? :create, @idea
-      %h2 Post a new idea
-      = render 'ideas/form'
+  %h2 Post a new idea
+  = render 'form'

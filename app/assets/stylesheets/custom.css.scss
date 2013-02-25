@@ -118,6 +118,15 @@ body {
   margin-top: -55px;
 }
 
+.code {
+  font-size: 10px;
+  line-height: 12px;
+}
+
+.info {
+  font-size: 13px;
+  color: #999;
+}
 
 
 // BOOTSTRAP OVERWRITES
@@ -135,6 +144,10 @@ body {
     display: inline-block;
     margin-left: 5px;
   }
+}
+
+.navbar .nav {
+  //margin-top: 15px;
 }
 
 .navbar-inverse .brand:hover,

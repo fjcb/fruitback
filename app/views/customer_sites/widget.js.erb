@@ -1,0 +1,35 @@
+<% #button_position = "left: -10px; top: 40%;" %> 
+<% color = "FAE117" %> 
+var button_css = "<%= (render partial: 'widgets/button_css', locals: { position: button_position(7), color: color } ).delete("\n") %>";
+var iframe_css = "<%= (render 'widgets/iframe_css').delete("\n") %>";
+var html_button = "<h1 style=\"color: #eee; margin: 10px\">F</h1>";
+var html_iframe = "<%= (render partial: 'widgets/iframe.html', locals: { site: @site, color: color } ).delete("\n").html_safe %>";
+
+var button = 'button';
+var fruitback = 'fruitback';
+
+//feedback button
+var fbDivButton = document.createElement('div');
+fbDivButton.setAttribute('id', button);
+fbDivButton.setAttribute('style', button_css);
+fbDivButton.setAttribute('onClick', 'javascript:showIFrame();');
+fbDivButton.innerHTML = html_button;
+
+//feedback widget
+var fbDivFrame = document.createElement('div');
+fbDivFrame.setAttribute('id', fruitback);
+fbDivFrame.setAttribute('style', iframe_css);
+fbDivFrame.setAttribute('onClick', 'javascript:hideIFrame();');
+fbDivFrame.innerHTML = html_iframe;
+
+var bodyTag = document.getElementsByTagName('body');
+bodyTag[0].appendChild(fbDivButton);
+bodyTag[0].appendChild(fbDivFrame);
+
+var showIFrame = function() {
+	document.getElementById(fruitback).style.display = 'block';
+}
+
+var hideIFrame = function() {
+	document.getElementById(fruitback).style.display = 'none';
+}

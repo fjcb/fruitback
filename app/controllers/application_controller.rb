@@ -30,11 +30,4 @@ class ApplicationController < ActionController::Base
     !current_user.try(:email)
   end
   
-  def after_sign_in_path_for(user)
-    if user.visitor?
-      sites_path
-    else
-      super
-    end
-  end
 end

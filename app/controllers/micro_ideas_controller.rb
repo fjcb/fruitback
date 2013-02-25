@@ -1,12 +1,11 @@
 class MicroIdeasController < ApplicationController
   
   inherit_resources
+  load_and_authorize_resource :idea
   
   defaults :resource_class => Idea,
     :collection_name => 'ideas',
     :instance_name => 'idea'
-  
-  load_and_authorize_resource :idea
   
   def create
     

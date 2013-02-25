@@ -1,12 +1,11 @@
 class MicroSitesController < ApplicationController
   
   inherit_resources
+  load_and_authorize_resource :site
   
   defaults :resource_class => Site,
     :collection_name => 'sites',
     :instance_name => 'site'
-  
-  load_and_authorize_resource
   
   layout 'micro_site'
   

@@ -4,7 +4,7 @@ Fruitback::Application.routes.draw do
   
   match ':users/check', to: 'users#check'
   
-  devise_for :users, :controllers => { :registrations => "registrations" }
+  devise_for :users, controllers: { registrations: "registrations", sessions: "sessions" }
   
   resources :users
   
@@ -30,7 +30,7 @@ Fruitback::Application.routes.draw do
   
   end
   
-  match ':sites/:id/widget', to: 'sites#widget'
+  match ':customer_sites/:id/widget', to: 'customer_sites#widget'
   
   match '/about', to: 'static_pages#about'
   

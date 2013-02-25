@@ -29,6 +29,7 @@
   - @idea.comments.each do |comment|
     = render 'comments/comment', comment: comment
 
-- if can? :create, @comment
-  %h3 Add comment
-  = render 'comments/form', url: site_idea_comments_path(@site, @idea)
+- content_for :sidebar do
+  - if can? :create, @comment
+    %h3 Add comment
+    = render 'comments/form', url: site_idea_comments_path(@site, @idea)

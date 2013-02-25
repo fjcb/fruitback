@@ -1,12 +1,15 @@
 class CustomerIdeasController < ApplicationController
 
   inherit_resources
+  load_and_authorize_resource :idea
   
-  defaults :resource_class => Site,
-    :collection_name => 'sites',
-    :instance_name => 'site' 
+  defaults :resource_class => Idea,
+    :collection_name => 'ideas',
+    :instance_name => 'idea' 
  
   layout 'customer_site'
+  
+  # CUSTOMER VIEW
   
   def show
     @idea = Idea.find(params[:id])

@@ -1,0 +1,20 @@
+%h1
+  Settings for:
+  =@site.name
+
+%h2 Change site
+
+= render 'form'
+
+%h2 Insert this to your homepage
+%textarea.code.input-xxlarge{rows: "7", onClick: "this.select();"}
+  &  <script type="text/javascript">
+  &    (function() {
+  &      var uv = document.createElement('script'); uv.type = 'text/javascript'; uv.async = true;
+  &      uv.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + '#{widget_url(@site)}';
+  &      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(uv, s);
+  &    })();
+  &  </script>
+
+- content_for :sidebar do
+  = render "sidebar"

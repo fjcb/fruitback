@@ -1,0 +1,13 @@
+
+%h1 Sites
+
+%table.table.table-hover.table-bordered
+  %tbody
+    - @sites.each do |site|
+      %tr
+        %td= link_to site.name, customer_site_path(site)
+
+- content_for :sidebar do
+  - if can? :create, @site
+    %h2 Create new site
+    = render 'form'
