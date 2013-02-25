@@ -1,19 +1,7 @@
-- #customer view
-- content_for :sidebar do
-  %h1= @site.name
-  
-  - if @site.user
-    %p= "Owner: #{ @site.user.name }"
-    
-  %ul
-    %li
-      = link_to "Ideas", site_ideas_path(@site)
-    %li
-      = link_to "Settings", edit_site_path(@site) 
-  
-  - if can? :update, @site
-    %h2 Change site
-    = render 'form'
+%h1= @site.name
+%p
+  Owner: 
+  = @site.user.name
 
 %h2 Ideas
 
@@ -23,5 +11,9 @@
       %tr
         %td= link_to idea.title, site_idea_path(@site, idea)
 
-- if can? :create, @idea
-  = render 'ideas/form'
+- content_for :sidebar do
+  = render "sidebar_header"
+  - if visitor?
+    - if can? :create, @idea
+      %h2 Post a new idea
+      = render 'ideas/form'

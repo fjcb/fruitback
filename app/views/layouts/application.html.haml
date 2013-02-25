@@ -8,19 +8,17 @@
       %div.header
         = render 'layouts/app_nav'
       
-      %div.main.container-fluid  
+      %div.container-fluid.main
         %div.row-fluid
-          %div.span12
-            = render 'layouts/alert'
-          
-            %div.row-fluid
+        
+          %div.span8
+            %div.content
+              = render 'layouts/alert'
+              = yield
             
-              %div.span8
-                %div.content
-                  = yield
-                
-              %div.span4  
-                %div.sidebar
-                  = yield :sidebar
+          %div.span4
+            %div.sidebar
+              = yield :sidebar
+              
 
     = render 'layouts/app_footer'

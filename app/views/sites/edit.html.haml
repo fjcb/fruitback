@@ -2,9 +2,8 @@
 
 %h2 Settings
 
-
 - if can? :update, @site
   = render 'form'
   
 - content_for :sidebar do
-  = link_to "Back to overview", site_path(@site)
+  = render "sidebar_header"
