@@ -1,7 +1,7 @@
 class MicroSitesController < ApplicationController
   
   inherit_resources
-  load_and_authorize_resource :site
+  authorize_resource :site, parent: false
   
   defaults :resource_class => Site,
     :collection_name => 'sites',

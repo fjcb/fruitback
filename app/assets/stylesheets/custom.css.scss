@@ -126,6 +126,15 @@ body {
   color: #999;
 }
 
+.logged-in {
+  a {
+    color: $yellow;
+    &:hover {
+      color: $yellow;
+    }
+  }
+}
+
 
 // BOOTSTRAP OVERWRITES
 

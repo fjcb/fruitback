@@ -1,7 +1,7 @@
 class IdeasController < ApplicationController
   
   inherit_resources
-  skip_load_and_authorize_resource
+  authorize_resource
   
   def show
     @idea = Idea.find(params[:id])
@@ -24,26 +24,9 @@ class IdeasController < ApplicationController
     
     @site = Site.find(params[:site_id])
     
-    if !user_signed_in?
-      # Try to log in existing user
-      user = User.find_by_email(params[:user][:email])
-      if user
-        if user.valid_password?(params[:user][:password])
-          sign_in(user)
-        else
-          respond_to do |format|
-            format.html {
-              redirect_to micro_site_path(@site), alert: "Wrong email/password."
-              return
-            }
-          end
-        end
-      else
-        user = User.new(params[:user])
-        user.name = "Anonymous" if !user.name
-        user.save
-        sign_in(user)
-      end
+    if !login
+      redirect_to site_path(@site), alert: "Wrong email/password."
+      return
     end
     
     @idea = Idea.new(params[:idea])
@@ -51,6 +34,7 @@ class IdeasController < ApplicationController
     
     @site.ideas.push @idea
     @site.save
+    
     super do |format|
       format.html {
         redirect_to site_idea_path(@site, @idea)

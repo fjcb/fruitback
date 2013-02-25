@@ -29,7 +29,7 @@ FactoryGirl.define do
     association :user, factory: :customer
     
     after(:create) do |site, evaluator|
-      FactoryGirl.create_list(:idea, 5, site: site)
+      FactoryGirl.create_list(:idea, 2, site: site)
     end
     
   end
@@ -42,7 +42,7 @@ FactoryGirl.define do
     association :user
     
     after(:create) do |idea, evaluator|
-      FactoryGirl.create_list(:comment, 5, idea: idea)
+      FactoryGirl.create_list(:comment, 2, idea: idea)
     end
     
   end

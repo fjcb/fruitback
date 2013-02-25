@@ -7,7 +7,7 @@
             %li{:class => "#{'active' if current_page?(root_path)}"}
               =link_to site_path(@site) do
                 %i.icon-home.icon-white
-                Home
+                = @site.name
             
             -if admin?
               %li{:class => "#{'active' if current_page?(customer_sites_path)}"}
@@ -27,5 +27,7 @@
                 = link_to 'Login', new_user_session_path
                 
           - if user_signed_in?
-            %p.logged-in= "Logged in as #{current_user.name}" 
+            %p.logged-in
+              Logged in as
+              = link_to current_user.name, user_path(current_user)
             

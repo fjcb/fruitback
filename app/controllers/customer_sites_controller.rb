@@ -1,7 +1,7 @@
 class CustomerSitesController < ApplicationController
   
   inherit_resources
-  load_and_authorize_resource :site, except: :widget
+  authorize_resource :site, parent: false, except: :widget
   
   defaults :resource_class => Site,
     :collection_name => 'sites',
@@ -12,16 +12,12 @@ class CustomerSitesController < ApplicationController
   # CUSTOMER VIEW
   
   def index
-    
-    return if redirect?
-    
     @site = Site.new
     if admin?
       @sites = Site.all
     elsif customer?
       @sites = Site.where(user_id: current_user)
     end
-    
     @form_url = customer_sites_path
     super
   end
@@ -39,18 +35,15 @@ class CustomerSitesController < ApplicationController
   
   def show
     @site = Site.find(params[:id])
-    
-    return if redirect?(@site)
-    
     @ideas = @site.ideas
     @idea = Idea.new
-    
     @form_url = customer_site_path(@site)
     super
   end
   
   def edit
     @site = Site.find(params[:id])
+    #authorize! :edit, @site
     @form_url = customer_site_path(@site)
     super
   end
