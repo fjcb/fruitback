@@ -19,4 +19,8 @@ class User < ActiveRecord::Base
     !admin? && !customer?
   end
   
+  validates :name, presence: true, length: { maximum: 50 }, on: :save
+  validates :admin, presence: true, on: :save
+  validates :customer, presence: true, on: :save
+  
 end
