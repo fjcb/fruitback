@@ -1,7 +1,8 @@
 class VotesController < ApplicationController
-
-  #inherit_resources
-
+  
+  authorize_resource
+  
+  # JSON only
   def create
     @site = Site.find(params[:site_id])
     @idea = Idea.find(params[:idea_id])

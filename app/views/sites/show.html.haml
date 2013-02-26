@@ -1,19 +1,10 @@
 %h1= @site.name
-%h2 Ideas
 
+%h2 Ideas
 - @ideas.each do |idea|
   %div.idea
     %a{:href => site_idea_path(@site, idea)}
-      %div.title
-        = idea.title
-      %div.info
-        %span.label.label-important Refused
-        &nbsp;
-        score:
-        %span.badge= idea.score
-        &nbsp;&middot;&nbsp;
-        = idea.comments.count
-        comments
+      = render 'ideas/small_idea', site: @site, idea: idea
 
 - content_for :sidebar do
   %h2 Post a new idea

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130226092547) do
+ActiveRecord::Schema.define(:version => 20130226144047) do
 
   create_table "comments", :force => true do |t|
     t.string   "text",       :null => false
@@ -37,6 +37,19 @@ ActiveRecord::Schema.define(:version => 20130226092547) do
   add_index "ideas", ["site_id"], :name => "index_ideas_on_site_id"
   add_index "ideas", ["user_id"], :name => "index_ideas_on_user_id"
 
+  create_table "responses", :force => true do |t|
+    t.text     "text"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.integer  "idea_id"
+    t.integer  "user_id"
+    t.integer  "state_id"
+  end
+
+  add_index "responses", ["idea_id"], :name => "index_responses_on_idea_id"
+  add_index "responses", ["state_id"], :name => "index_responses_on_state_id"
+  add_index "responses", ["user_id"], :name => "index_responses_on_user_id"
+
   create_table "sites", :force => true do |t|
     t.string   "name",       :null => false
     t.string   "url"
@@ -46,6 +59,13 @@ ActiveRecord::Schema.define(:version => 20130226092547) do
   end
 
   add_index "sites", ["user_id"], :name => "index_sites_on_user_id"
+
+  create_table "states", :force => true do |t|
+    t.string   "name"
+    t.string   "color"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "users", :force => true do |t|
     t.string   "email"

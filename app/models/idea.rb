@@ -11,6 +11,8 @@ class Idea < ActiveRecord::Base
   
   has_many :votes
   
+  has_many :responses
+  
   def editable?
     Time.now < created_at + 60*10
   end

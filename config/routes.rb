@@ -18,6 +18,8 @@ Fruitback::Application.routes.draw do
       
       resources :customer_comments
       
+      resources :customer_responses
+      
     end
     
   end

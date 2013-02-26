@@ -1,0 +1,12 @@
+%div.title
+  = idea.title
+%div.info
+  - if idea.responses.last
+    %span.label{style: "background-color: #{idea.responses.last.state.color};"}
+      = idea.responses.last.state.name
+    &nbsp;
+  score:
+  %span.badge= idea.score
+  &nbsp;&middot;&nbsp;
+  = idea.comments.count
+  comments

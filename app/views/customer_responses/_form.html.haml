@@ -1,0 +1,13 @@
+= simple_form_for [@site, @idea, @response], url: url do |f|
+  = f.error_notification
+  = f.input :state_id,
+    include_blank: false,
+    label: false,
+    collection: State.form_states
+  = f.input :text,
+    input_html: { class: "input-xlarge", rows: 3 },
+    placeholder: "Your response",
+    label: false
+  
+  = f.button :submit, "Post response", class: "btn btn-success"
+  

@@ -3,7 +3,7 @@
   = f.error_notification
   
   = f.input :title, required: true, input_html: { class: "input-xlarge" }, placeholder: "Enter your idea here", label: false
-  = f.input :description, required: true, as: :text, input_html: { class: "input-xlarge", rows: 5 }, placeholder: "Describe your idea", label: false
+  = f.input :description, as: :text, input_html: { class: "input-xlarge", rows: 5 }, placeholder: "Describe your idea", label: false
   
   - if !user_signed_in?
     = simple_fields_for @user do |u|

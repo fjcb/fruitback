@@ -15,9 +15,12 @@ class CustomerIdeasController < ApplicationController
     @idea = Idea.find(params[:id])
     @site = @idea.site
     @customer = User.find(@site.user.id)
+    @response = Response.new
     @comment = Comment.new
+    @user = User.new
+    @vote = Vote.find_by_user_id_and_idea_id(current_user, @idea) if user_signed_in?
     
     #@form_url = site_idea_path(@site, @idea)
-    super
+    #super
   end
 end

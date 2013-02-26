@@ -1,25 +1,5 @@
-%h1= @site.name
-%h2= @idea.title
 
-%div.well
-  %p
-    = @idea.description
-
-  %p
-    It belongs to site:
-    = link_to @idea.site.name, customer_site_path(@idea.site)
-  
-  %p
-    posted by:
-    = link_to @idea.user.name, @idea.user
-  
-  %small.text-right.muted
-    created @
-    = @idea.created_at
-  
-    - if @idea.edited?
-      and edited @
-      = @idea.updated_at
+= render 'ideas/idea', site: @site, idea: @idea, vote: @vote
 
 -if !@idea.comments.empty?
   %h2 Comments
@@ -27,6 +7,10 @@
     = render 'comments/comment', comment: comment
 
 - content_for :sidebar do
+  - if can? :create, @response
+    %h3 Respond
+    = render 'customer_responses/form', url: customer_site_customer_idea_customer_responses_path(@site, @idea)
+    
   - if can? :create, @comment
     %h3 Add comment
     = render 'comments/form', url: customer_site_customer_idea_customer_comments_path(@site, @idea)

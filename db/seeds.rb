@@ -5,6 +5,7 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
 if Rails.env.development?
   #FactoryGirl.create(:admin)
   #FactoryGirl.create(:comment)
@@ -16,3 +17,10 @@ end
 
 User.create name: "Fritz Jacob", email: "fjacob@tzi.de", password: "adminadmin", admin: true
 User.create name: "Robert Kuhfss", email: "kuhfss@tzi.de", password: "adminadmin", admin: true
+
+State.create name: 'none', color: 'whiteSmoke'
+State.create name: 'Refused', color: '#DA4F49'
+State.create name: 'Under review', color: '#FAA732'
+State.create name: 'Planned', color: '#49AFCD'
+State.create name: 'Started', color: '#006DCC'
+State.create name: 'Completed', color: '#5BB75B'

@@ -4,12 +4,10 @@
   = @site.user.name
 
 %h2 Ideas
-
-%table.table.table-hover.table-bordered
-  %tbody
-    - @ideas.each do |idea|
-      %tr
-        %td= link_to idea.title, customer_site_customer_idea_path(@site, idea)
+- @ideas.each do |idea|
+  %div.idea
+    %a{:href => customer_site_customer_idea_path(@site, idea)}
+      = render 'ideas/small_idea', site: @site, idea: idea
 
 - content_for :sidebar do
   = render "sidebar"

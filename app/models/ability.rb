@@ -22,13 +22,19 @@ class Ability
       # edit own ideas
       can :update, Idea, user: user, site: { user: user }
       
+      can :create, Response
+      
+      can :create, Vote
+      
     else
       
       # VISITOR
       
       # edit own ideas
       #can :update, Idea, user: user, editable?: true
-    
+      
+      can :create, Vote
+      
     end
     
     # EVERYBODY

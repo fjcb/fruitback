@@ -7,17 +7,7 @@
 
 - content_for :sidebar do
   %h1 Browse ideas
-  
   - @ideas.each do |idea|
     %div.idea
-      %a{:href => site_idea_path(@site, idea)}
-        %div.title
-          = idea.title
-        %div.info
-          %span.label.label-important Refused
-          &nbsp;&middot;&nbsp;
-          score:
-          %span.badge= idea.score
-          &nbsp;&middot;&nbsp;
-          = idea.comments.count
-          comments
+      %a{href: site_idea_path(@site, idea), target: '_blank'}
+        = render 'ideas/small_idea', site: @site, idea: idea
