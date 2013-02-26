@@ -6,8 +6,8 @@ class AddIdeaToVotes < ActiveRecord::Migration
       t.index :idea_id
     end
     
-    change_table :ideas do |t|
-      t.foreign_key :votes, :dependent => :set_null
+    change_table :votes do |t|
+      t.foreign_key :ideas, :dependent => :set_null
     end
   end
   
