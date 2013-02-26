@@ -9,11 +9,13 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me
   attr_accessible :name, :admin, :customer
   
-  has_many :ideas
-  
   has_many :sites
   
+  has_many :ideas
+  
   has_many :comments
+  
+  has_many :votes
   
   def visitor?
     !admin? && !customer?

@@ -1,5 +1,34 @@
 %h1= @idea.title
 
+%p
+  %span.label.label-important Refused
+  &nbsp;
+  score:
+  %span.badge{id: "score"}= @idea.score
+  - if user_signed_in?
+    &nbsp;&middot;&nbsp;
+    - if @vote
+      %button.btn.btn-mini.btn-success{id: "vote", style: "display: none;"} Vote
+      %button.btn.btn-mini.btn-warning{id: "unvote"} Unvote
+    - else
+      %button.btn.btn-mini.btn-warning{id: "unvote", style: "display: none;"} Unvote
+      %button.btn.btn-mini.btn-success{id: "vote"} Vote
+
+:javascript
+  $("#vote, #unvote").click(function(){
+    $.ajax({
+      url: "#{site_idea_votes_path(@site, @idea)}", 
+      method: "POST",
+      dataType: "json",
+      success: display
+    });
+  });
+  function display(data) {
+    $("#score").html(data.score);
+    $("#vote").toggle();
+    $("#unvote").toggle();
+  }
+
 %div.well
   %p
     = @idea.description

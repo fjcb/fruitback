@@ -7,6 +7,9 @@
   - if !user_signed_in?
     = simple_fields_for @user do |u|
       = u.input :email, input_html: { class: "input-xlarge" }, placeholder: "Your email address", label: false
+      -#%div.input-prepend
+      -#  %span.add-on
+      -#    %i.icon-lock
       = u.input :password, input_html: { class: "input-xlarge" }, placeholder: "fruitback password", label: false
       = u.input :name, required: true, input_html: { class: "input-xlarge" }, placeholder: "Your name", label: false
   - else

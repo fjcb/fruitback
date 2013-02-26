@@ -1,11 +1,19 @@
 %h1= @site.name
 %h2 Ideas
 
-%table.table.table-hover.table-bordered
-  %tbody
-    - @ideas.each do |idea|
-      %tr
-        %td= link_to idea.title, site_idea_path(@site, idea)
+- @ideas.each do |idea|
+  %div.idea
+    %a{:href => site_idea_path(@site, idea)}
+      %div.title
+        = idea.title
+      %div.info
+        %span.label.label-important Refused
+        &nbsp;
+        score:
+        %span.badge= idea.score
+        &nbsp;&middot;&nbsp;
+        = idea.comments.count
+        comments
 
 - content_for :sidebar do
   %h2 Post a new idea

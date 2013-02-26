@@ -6,6 +6,7 @@ class ApplicationController < ActionController::Base
   helper_method :admin?
   helper_method :customer?
   helper_method :anonymous?
+  
   helper_method :login
   
   protected

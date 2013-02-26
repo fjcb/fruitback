@@ -34,6 +34,8 @@ Fruitback::Application.routes.draw do
       
       resources :comments
       
+      resources :votes
+      
     end
   
   end

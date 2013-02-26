@@ -10,6 +10,7 @@ class IdeasController < ApplicationController
     @form_url = site_idea_path(@site, @idea)
     @comment = Comment.new
     @user = User.new
+    @vote = Vote.find_by_user_id_and_idea_id(current_user, @idea) if user_signed_in?
     super
   end
   

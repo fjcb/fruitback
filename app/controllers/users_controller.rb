@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   
-  #authorize_resource except: :check
+  inherit_resources
+  authorize_resource except: :check
   
   layout 'customer_site'
   
