@@ -5,7 +5,7 @@ class CreateIdeas < ActiveRecord::Migration
       t.string :description, :null => false
       t.integer :score, :default => 0, :null => false
 
-      t.timestamps
+      t.timestamps null: false
     end
   end
 end

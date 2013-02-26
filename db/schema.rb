@@ -17,8 +17,8 @@ ActiveRecord::Schema.define(:version => 20130226144047) do
     t.string   "text",       :null => false
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
-    t.integer  "idea_id"
-    t.integer  "user_id"
+    t.integer  "idea_id",    :null => false
+    t.integer  "user_id",    :null => false
   end
 
   add_index "comments", ["idea_id"], :name => "index_comments_on_idea_id"
@@ -92,8 +92,8 @@ ActiveRecord::Schema.define(:version => 20130226144047) do
     t.integer  "score",      :default => 0, :null => false
     t.datetime "created_at",                :null => false
     t.datetime "updated_at",                :null => false
-    t.integer  "user_id"
-    t.integer  "idea_id"
+    t.integer  "idea_id",                   :null => false
+    t.integer  "user_id",                   :null => false
   end
 
   add_index "votes", ["idea_id"], :name => "index_votes_on_idea_id"

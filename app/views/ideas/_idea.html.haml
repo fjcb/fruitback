@@ -9,27 +9,13 @@
   %span.badge{id: "score"}= idea.score
   - if user_signed_in?
     &nbsp;&middot;&nbsp;
-    - if vote
-      %button.btn.btn-mini.btn-success{id: "vote", style: "display: none;"} &nbsp;Vote&nbsp;
-      %button.btn.btn-mini.btn-warning{id: "unvote"} Unvote
-    - else
-      %button.btn.btn-mini.btn-warning{id: "unvote", style: "display: none;"} Unvote
-      %button.btn.btn-mini.btn-success{id: "vote"} &nbsp;Vote&nbsp;
-
-:javascript
-  $("#vote, #unvote").click(function(){
-    $.ajax({
-      url: "#{site_idea_votes_path(site, idea)}", 
-      method: "POST",
-      dataType: "json",
-      success: display
-    });
-  });
-  function display(data) {
-    $("#score").html(data.score);
-    $("#vote").toggle();
-    $("#unvote").toggle();
-  }
+    %span#vote{ "data-uri" => site_idea_votes_path(site, idea) }
+      - if vote
+        %button.btn.btn-mini.btn-success{ style: "display: none;"} &nbsp;Vote&nbsp;
+        %button.btn.btn-mini.btn-warning Unvote
+      - else
+        %button.btn.btn-mini.btn-warning{ style: "display: none;"} Unvote
+        %button.btn.btn-mini.btn-success &nbsp;Vote&nbsp;
 
 %div.well
   %p

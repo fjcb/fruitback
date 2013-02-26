@@ -3,7 +3,25 @@ class CreateResponses < ActiveRecord::Migration
     create_table :responses do |t|
       t.text :text
 
-      t.timestamps
+      t.timestamps null: false
+      
+      t.references :idea, null: false
+      
+      t.references :user, null: false
+      
+      t.references :state, null: false
     end
+    
+    change_table :votes do |t|
+      t.index :idea_id
+      t.foreign_key :ideas, :dependent => :delete
+      
+      t.index :user_id
+      t.foreign_key :users, :dependent => :delete
+      
+      t.index :state_id
+      #t.foreign_key :state, :dependent => :delete
+    end
+    
   end
 end
