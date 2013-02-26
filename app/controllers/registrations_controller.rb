@@ -14,4 +14,9 @@ class RegistrationsController < Devise::RegistrationsController
     super
   end
   
+  #def after_update_path_for(user)
+  #  super
+  #  #redirect_to user_path(user)
+  #end
+  
 end

@@ -2,7 +2,8 @@ Fruitback::Application.routes.draw do
 
   root to: "static_pages#home"
   
-  match ':users/check', to: 'users#check'
+  match 'users/check', to: 'users#check'
+  #match 'profile/:id', to: 'users#show'
   
   devise_for :users, controllers: {
     registrations: "registrations",

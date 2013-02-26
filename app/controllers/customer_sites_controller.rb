@@ -12,6 +12,7 @@ class CustomerSitesController < ApplicationController
   # CUSTOMER VIEW
   
   def index
+    return if redirect?
     @site = Site.new
     if admin?
       @sites = Site.all
@@ -35,6 +36,7 @@ class CustomerSitesController < ApplicationController
   
   def show
     @site = Site.find(params[:id])
+    return if redirect?(@site)
     @ideas = @site.ideas
     @idea = Idea.new
     @form_url = customer_site_path(@site)
