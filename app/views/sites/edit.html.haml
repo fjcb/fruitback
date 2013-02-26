@@ -1,9 +1,0 @@
-%h1= @site.name
-
-%h2 Settings
-
-- if can? :update, @site
-  = render 'form'
-  
-- content_for :sidebar do
-  = render "sidebar_header"
