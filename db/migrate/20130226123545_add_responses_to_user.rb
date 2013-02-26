@@ -6,7 +6,7 @@ class AddResponsesToUser < ActiveRecord::Migration
       t.index :user_id
     end
     
-    change_table :user do |t|
+    change_table :users do |t|
       t.foreign_key :responses, :dependent => :set_null
     end
   end

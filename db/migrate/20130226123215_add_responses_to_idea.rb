@@ -6,7 +6,7 @@ class AddResponsesToIdea < ActiveRecord::Migration
       t.index :idea_id
     end
     
-    change_table :idea do |t|
+    change_table :ideas do |t|
       t.foreign_key :responses, :dependent => :set_null
     end
   end
