@@ -5,7 +5,7 @@
     %span.label{style: "background-color: #{idea.responses.last.state.color};"}
       = idea.responses.last.state.name
     &nbsp;
-  score:
+  %strong score:
   %span.badge{id: "score"}= idea.score
   - if user_signed_in?
     &nbsp;&middot;&nbsp;
@@ -17,18 +17,14 @@
         %button.btn.btn-mini.btn-warning.vote{ style: "display: none;"} Unvote
         %button.btn.btn-mini.btn-success.vote &nbsp;Vote&nbsp;
 
-%div.well
-  %p
-    = idea.description
+%div.posting
+  %p= idea.description
 
-  %p
-    posted by:
-    = link_to idea.user.name, profile_path(idea.user)
+  %p.info
+    Posted by #{link_to idea.user.name, profile_path(idea.user)}
+    = distance_of_time_in_words(Time.now - idea.created_at)
+    ago
   
-  %small.text-right.muted
-    created 
-    = idea.created_at
+  -#%button.btn.btn-mini.btn-danger.delete Delete
   
-    - if idea.edited?
-      and edited 
-      = idea.updated_at
+  .clearfix

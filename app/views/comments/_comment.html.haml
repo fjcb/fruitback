@@ -1,6 +1,8 @@
 %div.well
   %p
     = comment.text
-  %p
-    posted by:
-    = link_to comment.user.name, profile_path(comment.user)
+  
+  %span.info
+    Posted by #{link_to comment.user.name, profile_path(comment.user)}
+    = distance_of_time_in_words(Time.now - comment.created_at)
+    ago
