@@ -1,8 +1,6 @@
 class State < ActiveRecord::Base
   attr_accessible :color, :name
   
-  #association
-  
   def self.form_states#(site)
     r = []
     State.all.each { |state|

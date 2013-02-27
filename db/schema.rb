@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130226144047) do
+ActiveRecord::Schema.define(:version => 20130226143229) do
 
   create_table "comments", :force => true do |t|
     t.string   "text",       :null => false
@@ -41,9 +41,9 @@ ActiveRecord::Schema.define(:version => 20130226144047) do
     t.text     "text"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
-    t.integer  "idea_id"
-    t.integer  "user_id"
-    t.integer  "state_id"
+    t.integer  "idea_id",    :null => false
+    t.integer  "user_id",    :null => false
+    t.integer  "state_id",   :null => false
   end
 
   add_index "responses", ["idea_id"], :name => "index_responses_on_idea_id"

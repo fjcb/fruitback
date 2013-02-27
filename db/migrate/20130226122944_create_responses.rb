@@ -12,7 +12,7 @@ class CreateResponses < ActiveRecord::Migration
       t.references :state, null: false
     end
     
-    change_table :votes do |t|
+    change_table :responses do |t|
       t.index :idea_id
       t.foreign_key :ideas, :dependent => :delete
       
@@ -20,7 +20,6 @@ class CreateResponses < ActiveRecord::Migration
       t.foreign_key :users, :dependent => :delete
       
       t.index :state_id
-      #t.foreign_key :state, :dependent => :delete
     end
     
   end

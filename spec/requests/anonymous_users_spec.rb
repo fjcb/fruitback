@@ -4,11 +4,23 @@ describe "anonymous user" do
   
   before do
     
-    @site = Site.new name: "Bananinator", url: "http://bananinator.com"
-    @user = User.create name: "Customer", email: "user@example.com", customer: true
-    @site.user_id = @user.id
+    @user = User.create! name: "A user", email: "user@example.com"
+    @customer = User.create! name: "A customer", email: "customer@example.com", customer: true
+    
+    @site = Site.new name: "A site"
+    @site.user_id = @customer.id
     @site.save
-
+    
+    @idea = Idea.new title: "An idea", description: "A user's idea."
+    @idea.site_id = @site.id
+    @idea.user_id = @user.id
+    @idea.save
+    
+    @comment = Comment.new text: "A user's comment."
+    @comment.user_id = @user.id
+    @comment.idea_id = @idea.id
+    @comment.save
+    
   end
   
   describe "creates idea" do
@@ -47,10 +59,6 @@ describe "anonymous user" do
       
       before do
         
-        @idea = Idea.create title: 'Funky idea', description: 'Description of my funky idea.'
-        @site.ideas.push(@idea)
-        @site.save
-        
         visit site_idea_path(@site, @idea)
         
         fill_in('comment_text', :with => 'Description of my comment.')
@@ -66,7 +74,7 @@ describe "anonymous user" do
       
       it "is saved" do
 
-        Comment.last.description.should == "Description of my comment."
+        Comment.last.text.should == "Description of my comment."
         
       end
       

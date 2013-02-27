@@ -17,11 +17,13 @@ class User < ActiveRecord::Base
   
   has_many :votes
   
+  has_many :responses
+  
   def visitor?
     !admin? && !customer?
   end
   
-  validates :name, presence: true, length: { maximum: 50 }, on: :save
+  validates :name, presence: true, length: { maximum: 50 }
   validates :admin, presence: true, on: :save
   validates :customer, presence: true, on: :save
   

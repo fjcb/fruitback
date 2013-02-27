@@ -1,14 +1,15 @@
 require 'spec_helper'
 
-describe "CustomerSignUps" do
+describe "customer" do
   
-  describe "user signs up" do
+  describe "signs up" do
     
     let(:email) { ('a'..'z').to_a.shuffle[0..19].join + "@test.de" }
     
-    it "user should be customer" do
+    it "should be customer" do
       visit new_user_registration_path
       
+      fill_in('Name', :with => "Customer")
       fill_in('Email', :with => email)
       fill_in('Password', :with => '12345678')
       fill_in('Password confirmation', :with => '12345678')
