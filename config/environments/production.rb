@@ -16,10 +16,10 @@ Fruitback::Application.configure do
   }
   #config.action_mailer.default_url_options = { :host => 'fruitback.digineo.de' }
   #config.action_mailer.delivery_method = :sendmail
-  #config.middleware.use "ExceptionNotifier",
-  #  :email_prefix => "Fruitback",
-  #  :sender_address => "error@fruitback.digineo.de",
-  #  :exception_recipients => %w{ fruitback@jacob-meyer.de }
+  config.middleware.use "ExceptionNotifier",
+    :email_prefix => "Fruitback",
+    :sender_address => "fruitback@jacob-meyer.de",
+    :exception_recipients => %w{ fruitback@jacob-meyer.de }
 
   # Code is not reloaded between requests
   config.cache_classes = true
