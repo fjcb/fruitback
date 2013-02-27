@@ -2,10 +2,6 @@ class MicroSitesController < ApplicationController
   
   authorize_resource :site, parent: false
   
-  defaults :resource_class => Site,
-    :collection_name => 'sites',
-    :instance_name => 'site'
-  
   layout 'micro_site'
   
   def show

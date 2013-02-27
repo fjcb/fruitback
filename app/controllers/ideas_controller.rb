@@ -5,8 +5,7 @@ class IdeasController < ApplicationController
   
   def show
     @idea = Idea.find(params[:id])
-    @site = @idea.site
-    #@site = Site.find(params[:site_id])
+    @site = Site.find(params[:site_id])
     @form_url = site_idea_path(@site, @idea)
     @comments = @idea.comments
     @comment = Comment.new
