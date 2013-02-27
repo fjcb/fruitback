@@ -3,4 +3,4 @@
     = comment.text
   %p
     posted by:
-    = link_to comment.user.name, comment.user
+    = link_to comment.user.name, profile_path(comment.user)

@@ -2,12 +2,8 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-$customer_color: #FAE117;
+$blue: #009FE3;
 
 body.customer {
-  background-color: $customer_color;
-}
-
-.spacer {
-  height: 10px;
+  background-color: $blue;
 }

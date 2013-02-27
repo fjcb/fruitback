@@ -1,6 +1,5 @@
 class MicroSitesController < ApplicationController
   
-  inherit_resources
   authorize_resource :site, parent: false
   
   defaults :resource_class => Site,
@@ -15,7 +14,6 @@ class MicroSitesController < ApplicationController
     @idea = Idea.new
     @user = User.new
     @form_url = micro_site_micro_ideas_path(@site)
-    super
   end
   
 end

@@ -1,0 +1,25 @@
+// Place all the styles related to the footer here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+$dark_gray: #333333;
+
+.footer {
+  font-family: 'Open Sans';
+  font-size: 11px;
+  text-align: center;
+  
+  a {
+    color: $dark_gray;
+  }
+  
+  a:hover {
+    color: #fff;
+    text-decoration: none;
+  }
+  
+  li {
+    list-style: none;
+    display: inline-block;
+  }
+}

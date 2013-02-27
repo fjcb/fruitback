@@ -2,10 +2,13 @@ class RegistrationsController < Devise::RegistrationsController
   
   layout 'customer_site'
   
-  def create
-    super
+  # Ajax call to verify that a user with a given email address exists
+  # Returns "true" if exists or "false" if not
+  def check
+    user = User.find_by_email(params[:email])
+    render json: !!user
   end
-  
+
   protected
   
   def after_sign_up_path_for(user)

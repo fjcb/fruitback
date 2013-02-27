@@ -11,11 +11,11 @@
     &nbsp;&middot;&nbsp;
     %span#vote{ "data-uri" => site_idea_votes_path(site, idea) }
       - if vote
-        %button.btn.btn-mini.btn-success{ style: "display: none;"} &nbsp;Vote&nbsp;
-        %button.btn.btn-mini.btn-warning Unvote
+        %button.btn.btn-mini.btn-success.vote{ style: "display: none;"} &nbsp;Vote&nbsp;
+        %button.btn.btn-mini.btn-warning.vote Unvote
       - else
-        %button.btn.btn-mini.btn-warning{ style: "display: none;"} Unvote
-        %button.btn.btn-mini.btn-success &nbsp;Vote&nbsp;
+        %button.btn.btn-mini.btn-warning.vote{ style: "display: none;"} Unvote
+        %button.btn.btn-mini.btn-success.vote &nbsp;Vote&nbsp;
 
 %div.well
   %p
@@ -23,7 +23,7 @@
 
   %p
     posted by:
-    = link_to idea.user.name, idea.user
+    = link_to idea.user.name, profile_path(idea.user)
   
   %small.text-right.muted
     created 

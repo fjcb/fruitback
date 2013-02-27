@@ -1,0 +1,24 @@
+
+- if @user == current_user
+  %h1 Your profile
+  %p
+    = link_to "Edit user account", edit_user_registration_path
+  
+-else
+  %h1= @user.name
+
+%p
+  Ideas by this user:
+  = @user.ideas.count
+
+%p
+  Comments by this user:
+  = @user.comments.count
+
+- if !@user.sites.empty?
+  %h2 Sites by this user
+  %table.table.table-hover.table-bordered
+    %tbody
+      - @user.sites.each do |site|
+        %tr
+          %td= link_to site.name, customer_site_path(site)

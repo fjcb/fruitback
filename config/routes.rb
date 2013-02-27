@@ -2,15 +2,12 @@ Fruitback::Application.routes.draw do
 
   root to: "static_pages#home"
   
-  match 'users/check', to: 'users#check'
-  #match 'profile/:id', to: 'users#show'
-  
   devise_for :users, controllers: {
     registrations: "registrations",
     passwords: "passwords",
     sessions: "sessions" }
   
-  resources :users
+  resources :profiles
   
   resources :customer_sites do
     
