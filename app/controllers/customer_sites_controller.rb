@@ -14,23 +14,28 @@ class CustomerSitesController < ApplicationController
   def index
     return if redirect?
     @site = Site.new
-    if admin?
-      @sites = Site.all
-    elsif customer?
-      @sites = Site.where(user_id: current_user)
-    end
+    @sites = admin? ? Site.all : current_user.sites
     @form_url = customer_sites_path
     super
   end
   
   def create
+    return if redirect?
     @site = Site.new(params[:site])
     @site.user = current_user
-    @site.save
     super do |format|
-      format.html {
-        redirect_to customer_site_path(@site)
-      }
+      if @site.save
+        format.html {
+          redirect_to customer_site_path(@site)
+        }
+      else
+        format.html {
+          # Prepare index view to be rendered
+          @sites = admin? ? Site.all : current_user.sites
+          @form_url = customer_sites_path
+          render :index
+        }
+      end
     end
   end
   

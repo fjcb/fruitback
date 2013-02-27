@@ -5,6 +5,6 @@ class Site < ActiveRecord::Base
   
   has_many :ideas
   
-  validates :name, presence: true, length: { maximum: 50 }, on: :save
+  validates :name, presence: true, length: { maximum: 50 }
   
 end
