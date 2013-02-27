@@ -7,6 +7,8 @@ Fruitback::Application.routes.draw do
     passwords: "passwords",
     sessions: "sessions" }
   
+  match '/profiles/check', to: 'profiles#check'
+  
   resources :profiles
   
   resources :customer_sites do
@@ -39,7 +41,7 @@ Fruitback::Application.routes.draw do
   
   end
   
-  match ':customer_sites/:id/widget', to: 'customer_sites#widget'
+  match '/customer_sites/:id/widget', to: 'customer_sites#widget'
   
   match '/about', to: 'static_pages#about'
   

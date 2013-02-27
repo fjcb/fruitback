@@ -11,11 +11,7 @@
         
           %div.span6
             %div.content
-              - if notice
-                %div.alert.alert-success= notice
-              - if alert
-                %div.alert.alert-error= alert
-                
+              = render 'layouts/alert'
               = yield
           
           %div.span6

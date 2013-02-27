@@ -27,7 +27,7 @@ function check_email() {
 		return;
 	}
 	
-	$.getJSON( "/users/check", { email: email },
+	$.getJSON( "/profiles/check", { email: email },
 		function(data) {
 			var d = $.parseJSON(data);
 			if(d === true) {
