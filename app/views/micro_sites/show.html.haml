@@ -1,9 +1,7 @@
 
-%h1 Post a new idea
-
 - if can? :create, @idea
-  = render 'form'
-
+  %h1 Post a new idea
+  = render 'ideas/form'
 
 - content_for :sidebar do
   %h1 Browse ideas
