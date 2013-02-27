@@ -30,4 +30,13 @@ class ProfilesController < ApplicationController
     redirect_to profile_path(@user)
   end
   
+  # Admin only ;)
+  def upgrade
+    @user = User.find(params[:id])
+    @user.customer = true
+    @user.save!
+    flash[:notice] = "This user was upgraded successfully."
+    redirect_to profile_path(@user)
+  end
+  
 end

@@ -8,7 +8,14 @@
   %h1= @user.name
 
 - if admin?
-  %p= link_to "Confirm this user's email address", profiles_confirm_path(@user)
+  - if not @user.confirmed?
+    %p
+      %i.icon-ok
+      = link_to "Confirm this user's email address", profiles_confirm_path(@user)
+  - if not @user.customer?
+    %p
+      %i.icon-star
+      = link_to "Upgrade this user to 'customer' status", profiles_upgrade_path(@user)
 
 %p
   Ideas by this user:
@@ -17,6 +24,10 @@
 %p
   Comments by this user:
   = @user.comments.count
+
+%p
+  Votes by this user:
+  = @user.votes.count
 
 - if !@user.sites.empty?
   %h2 Sites by this user

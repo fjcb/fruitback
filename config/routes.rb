@@ -10,6 +10,7 @@ Fruitback::Application.routes.draw do
   
   match '/profiles/check', to: 'profiles#check'
   match '/profiles/:id/confirm', to: 'profiles#confirm', as: :profiles_confirm
+  match '/profiles/:id/upgrade', to: 'profiles#upgrade', as: :profiles_upgrade
   
   resources :profiles
   
