@@ -8,10 +8,9 @@ class SitesController < ApplicationController
   # USER VIEW
   
   def index
-    
+    @sites = []
     if user_signed_in?
       # Sites that own one of my ideas or comments
-      @sites = []
       current_user.comments.each { |comment|
         site = comment.idea.site
         if !@sites.include? site

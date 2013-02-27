@@ -1,11 +1,14 @@
 
 - if @user == current_user
   %h1 Your profile
-  %p
-    = link_to "Edit user account", edit_user_registration_path
+  -#%button.btn.btn-primary
+  %p= link_to "Edit user account", edit_user_registration_path
   
 -else
   %h1= @user.name
+
+- if admin?
+  %p= link_to "Confirm this user's email address", profiles_confirm_path(@user)
 
 %p
   Ideas by this user:

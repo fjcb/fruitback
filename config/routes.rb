@@ -9,6 +9,7 @@ Fruitback::Application.routes.draw do
     sessions: "sessions" }
   
   match '/profiles/check', to: 'profiles#check'
+  match '/profiles/:id/confirm', to: 'profiles#confirm', as: :profiles_confirm
   
   resources :profiles
   
