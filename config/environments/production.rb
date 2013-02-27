@@ -3,11 +3,23 @@ Fruitback::Application.configure do
 
   # Mail service
   config.action_mailer.default_url_options = { :host => 'fruitback.digineo.de' }
-  config.action_mailer.delivery_method = :sendmail
-  config.middleware.use "ExceptionNotifier",
-    :email_prefix => "Fruitback",
-    :sender_address => "error@fruitback.digineo.de",
-    :exception_recipients => %w{ fruitback@jacob-meyer.de }
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.smtp_settings = {
+    :enable_starttls_auto => true,
+    :address => "smtp.strato.de",
+    :port => 25,
+    :domain => "jacob-meyer.de",
+    :authentication => :login,
+    :user_name => "fruitback@jacob-meyer.de",
+    :password => "!QAYxsw2",
+  }
+  #config.action_mailer.default_url_options = { :host => 'fruitback.digineo.de' }
+  #config.action_mailer.delivery_method = :sendmail
+  #config.middleware.use "ExceptionNotifier",
+  #  :email_prefix => "Fruitback",
+  #  :sender_address => "error@fruitback.digineo.de",
+  #  :exception_recipients => %w{ fruitback@jacob-meyer.de }
 
   # Code is not reloaded between requests
   config.cache_classes = true
