@@ -7,6 +7,7 @@ class IdeasController < ApplicationController
     @idea = Idea.find(params[:id])
     @site = Site.find(params[:site_id])
     @form_url = site_idea_path(@site, @idea)
+    @comments = @idea.comments
     @comment = Comment.new
     @user = User.new
     @vote = Vote.find_by_user_id_and_idea_id(current_user, @idea) if user_signed_in?
