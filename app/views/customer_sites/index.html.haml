@@ -1,11 +1,16 @@
 
 %h1 Sites
 
-%table.table.table-hover.table-bordered
-  %tbody
-    - @sites.each do |site|
-      %tr
-        %td= link_to site.name, customer_site_path(site)
+- if !@sites.empty?
+  %table.table.table-hover.table-bordered
+    %tbody
+      - @sites.each do |site|
+        %tr
+          %td= link_to site.name, customer_site_path(site)
+- else
+  %div.well
+    %h2 First steps
+    You don't have created any sites yet. Take a look on the sidebar on the right and create your first site right now!
 
 - content_for :sidebar do
   - if can? :create, @site

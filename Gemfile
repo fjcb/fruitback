@@ -57,7 +57,7 @@ end
 
 group :production do
   gem 'mysql2'
-  gem 'therubyracer', '0.10.2'
+  #gem 'therubyracer', '0.10.2'
 end
 
 group :deployment do

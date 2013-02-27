@@ -10,13 +10,27 @@ $light_gray: #B1B1B1;
 
 // CUSTOM
 
-p.logged-in {
+p.session{
   padding: 10px 0 0;
   margin: 0;
   color: #fff;
   float: right;
   text-weight: none;
   font-size: 11px;
+  
+  a {
+    color: $light_gray;
+    &:hover {
+      color: $yellow;
+    }
+  }
+  
+  a.user {
+    color: $yellow;
+    &:hover {
+      color: $yellow;
+    }
+  }
 }
 
 h1, h2, h3, h4, h5 {
@@ -97,15 +111,6 @@ small {
 .info {
   font-size: 13px;
   color: #999;
-}
-
-.logged-in {
-  a {
-    color: $yellow;
-    &:hover {
-      color: $yellow;
-    }
-  }
 }
 
 
