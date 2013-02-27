@@ -23,6 +23,9 @@ user1 = User.create! name: "Alice Demo", email: "alice@example.com", password: "
 user2 = User.create! name: "Bob Demo", email: "bob@example.com", password: "demodemo"
 user3 = User.create! name: "Carl Demo", email: "carl@example.com", password: "demodemo"
 
+# CONFIRM ALL USERS
+User.all.each { |user| user.confirm! }
+
 site = Site.new name: "Demo Site", url: "http://fruitback.digineo.de/feedback_index.html"
 site.user = customer
 site.save!

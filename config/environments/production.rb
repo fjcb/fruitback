@@ -1,6 +1,14 @@
 Fruitback::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb
 
+  # Mail service
+  config.action_mailer.default_url_options = { :host => 'fruitback.digineo.de' }
+  config.action_mailer.delivery_method = :sendmail
+  config.middleware.use "ExceptionNotifier",
+    :email_prefix => "Fruitback",
+    :sender_address => "error@fruitback.digineo.de",
+    :exception_recipients => %w{ fruitback@jacob-meyer.de }
+
   # Code is not reloaded between requests
   config.cache_classes = true
 
@@ -50,7 +58,7 @@ Fruitback::Application.configure do
 
   # Disable delivery errors, bad email addresses will be ignored
   # config.action_mailer.raise_delivery_errors = false
-
+  
   # Enable threaded mode
   # config.threadsafe!
 

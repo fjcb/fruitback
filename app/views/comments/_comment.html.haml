@@ -1,4 +1,4 @@
-%div.well
+%div.well.posting
   %p
     = comment.text
   
@@ -6,3 +6,5 @@
     Posted by #{link_to comment.user.name, profile_path(comment.user)}
     = distance_of_time_in_words(Time.now - comment.created_at)
     ago
+  
+  .clearfix
