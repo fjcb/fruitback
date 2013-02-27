@@ -19,15 +19,13 @@
             -elsif customer?
               %li{:class => "#{'active' if current_page?(customer_sites_path)}"}
                 = link_to "My sites", customer_sites_path
-            
-            %li{:class => "#{'active' if current_page?(new_user_session_path)}"}
-              - if user_signed_in?
-                = link_to 'Logout', destroy_user_session_path, :method => :delete
-              - else
-                = link_to 'Login', new_user_session_path
-                
-          - if user_signed_in?
-            %p.logged-in
+          
+          %p.session      
+            - if user_signed_in?
               Logged in as
-              = link_to current_user.name, user_path(current_user)
-            
+              = link_to current_user.name, user_path(current_user), class: "user"
+              |
+              = link_to 'Logout', destroy_user_session_path, :method => :delete
+            - else
+              = link_to 'Login', new_user_session_path
+          
