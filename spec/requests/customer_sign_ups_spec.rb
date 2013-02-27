@@ -6,7 +6,7 @@ describe "customer" do
     
     let(:email) { ('a'..'z').to_a.shuffle[0..19].join + "@test.de" }
     
-    it "should be customer" do
+    before do 
       visit new_user_registration_path
       
       fill_in('Name', :with => "Customer")
@@ -15,10 +15,18 @@ describe "customer" do
       fill_in('Password confirmation', :with => '12345678')
       
       click_on "Sign up"
-      
+    end
+    
+    it "should be customer" do  
       User.find_by_email(email).customer.should == true;
-      
-      page.should have_content "sites"     
+    end
+    
+    it "can create new site" do
+      page.should have_content "Create new site"     
+    end
+  
+    it "can see first steps" do
+      page.should have_content "First steps"
     end  
   
   end

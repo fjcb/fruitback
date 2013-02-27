@@ -11,7 +11,8 @@ class RegistrationsController < Devise::RegistrationsController
   def after_sign_up_path_for(user)
     user.customer = true
     user.save
-    super
+    customer_sites_path 
+    #super
   end
   
   #def after_update_path_for(user)
