@@ -9,7 +9,7 @@
 User.create! name: "Fritz Jacob", email: "fjacob@tzi.de", password: "adminadmin", admin: true
 User.create! name: "Robert Kuhfss", email: "kuhfss@tzi.de", password: "adminadmin", admin: true
 
-State.create! name: 'none', color: 'whiteSmoke'
+State.create! name: 'none', color: '#363636'
 State.create! name: 'Refused', color: '#DA4F49'
 State.create! name: 'Under review', color: '#FAA732'
 State.create! name: 'Planned', color: '#49AFCD'

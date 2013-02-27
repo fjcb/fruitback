@@ -1,7 +1,7 @@
 %div.title
   = idea.title
 %div.info
-  - if idea.responses.last
+  - if idea.responses.last && idea.responses.last.state.name != "none"
     %span.label{style: "background-color: #{idea.responses.last.state.color};"}
       = idea.responses.last.state.name
     &nbsp;
