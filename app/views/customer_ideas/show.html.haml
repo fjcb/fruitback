@@ -1,10 +1,12 @@
 
 = render 'ideas/idea', site: @site, idea: @idea, vote: @vote
 
--if !@idea.comments.empty?
-  %h2 Comments
+%h2 Comments
+- if !@comments.empty?
   - @idea.comments.each do |comment|
     = render 'comments/comment', comment: comment
+- else
+  = render 'comments/empty'
 
 - content_for :sidebar do
   - if can? :create, @response
@@ -14,5 +16,5 @@
   - if can? :create, @comment
     %h3 Add comment
     = render 'comments/form', url: customer_site_customer_idea_customer_comments_path(@site, @idea)
-    
+      
   = render 'customer_sites/sidebar'

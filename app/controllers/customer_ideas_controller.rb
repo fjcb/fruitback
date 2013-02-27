@@ -16,6 +16,7 @@ class CustomerIdeasController < ApplicationController
     @site = @idea.site
     @customer = User.find(@site.user.id)
     @response = Response.new
+    @comments = @idea.comments
     @comment = Comment.new
     @user = User.new
     @vote = Vote.find_by_user_id_and_idea_id(current_user, @idea) if user_signed_in?

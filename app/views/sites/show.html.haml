@@ -1,10 +1,13 @@
 %h1= @site.name
 
 %h2 Ideas
-- @ideas.each do |idea|
-  %div.idea
-    %a{:href => site_idea_path(@site, idea)}
-      = render 'ideas/small_idea', site: @site, idea: idea
+- if !@ideas.empty?
+  - @ideas.each do |idea|
+    %div.idea
+      %a{:href => site_idea_path(@site, idea)}
+        = render 'ideas/small_idea', site: @site, idea: idea
+- else
+  = render 'ideas/empty'
 
 - content_for :sidebar do
   %h2 Post a new idea

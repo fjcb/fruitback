@@ -4,8 +4,11 @@
   = render 'ideas/form'
 
 - content_for :sidebar do
-  %h1 Browse ideas
-  - @ideas.each do |idea|
-    %div.idea
-      %a{href: site_idea_path(@site, idea), target: '_blank'}
-        = render 'ideas/small_idea', site: @site, idea: idea
+  - if !@ideas.empty?
+    %h1 Browse ideas
+    - @ideas.each do |idea|
+      %div.idea
+        %a{href: site_idea_path(@site, idea), target: '_blank'}
+          = render 'ideas/small_idea', site: @site, idea: idea
+  - else
+    = render 'ideas/empty'

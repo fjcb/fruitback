@@ -4,10 +4,13 @@
   = @site.user.name
 
 %h2 Ideas
-- @ideas.each do |idea|
-  %div.idea
-    %a{:href => customer_site_customer_idea_path(@site, idea)}
-      = render 'ideas/small_idea', site: @site, idea: idea
+- if !@ideas.empty?
+  - @ideas.each do |idea|
+    %div.idea
+      %a{:href => customer_site_customer_idea_path(@site, idea)}
+        = render 'ideas/small_idea', site: @site, idea: idea
+- else
+  = render 'ideas/empty'
 
 - content_for :sidebar do
   = render "sidebar"
