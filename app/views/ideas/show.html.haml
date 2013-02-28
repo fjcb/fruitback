@@ -2,12 +2,12 @@
   %i.icon-chevron-left
   = link_to "Browse ideas", site_path(@site)
 
-= render 'ideas/idea', site: @site, idea: @idea, vote: @vote
+= render 'ideas/idea', site: @site, idea: @idea, vote: @vote, url: site_idea_path(@site, @idea)
 
 %h2 Comments
 - if !@comments.empty?
   - @comments.each do |comment|
-    = render 'comments/comment', comment: comment
+    = render 'comments/comment', comment: comment, url: site_idea_comment_path(@site, @idea, comment)
 - else
   = render 'comments/empty'
 
