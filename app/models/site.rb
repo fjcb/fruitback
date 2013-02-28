@@ -3,7 +3,7 @@ class Site < ActiveRecord::Base
   
   belongs_to :user
   
-  has_many :ideas
+  has_many :ideas, :dependent => :delete_all
   
   validates :name, presence: true, length: { maximum: 50 }
   

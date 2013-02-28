@@ -7,11 +7,11 @@ class Idea < ActiveRecord::Base
   belongs_to :site
   attr_accessible :site_id
   
-  has_many :comments
+  has_many :comments, :dependent => :delete_all
   
-  has_many :votes
+  has_many :votes, :dependent => :delete_all
   
-  has_many :responses
+  has_many :responses, :dependent => :delete_all
   
   def editable?
     Time.now < created_at + 60*10

@@ -116,6 +116,7 @@ describe "deletion" do
       
       it { Response.find_by_id(@response).should == nil }
       
+      # don't remove the state
       it { State.find_by_id(@state).should_not == nil }
       
     end
