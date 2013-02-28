@@ -2,31 +2,19 @@
 
 - if user_signed_in?
   %p
-    = "You are signed in as #{current_user.name}."
+    = "You are logged in as #{current_user.name}."
     
 - else
+  %h2 Log in
   %div.well
-    %h2 Sign in
     = simple_form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
       = f.input :email, :required => false, :autofocus => true
       = f.input :password, :required => false
       = f.input :remember_me, :as => :boolean if devise_mapping.rememberable?
       
-      = f.button :submit, "Sign in", class: 'btn btn-success'
+      = f.button :submit, "Log in", class: 'btn btn-success'
   
-    %p
-      Don't have a customer account? 
-      = link_to 'Sign up!', new_user_registration_path
+  = render "devise/shared/links"
 
 - content_for :sidebar do
-  %h2 What is Fruitback?
-  %p
-    Fruitback is an open source project started in February 2013 at the University of Bremen.
-  
-  %h3 For your web app
-  %p
-    Embed Fruitback in your web app with just a single snippet of code to create a seamless customer service experience for users.
-  
-  %h3 For your brand
-  %p
-    Fruitback lets your users post, discuss, and search for ideas. 
+  = render "layouts/intro"
