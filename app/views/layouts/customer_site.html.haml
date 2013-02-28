@@ -23,4 +23,12 @@
 
     = render 'layouts/footer'
     
+    :javascript
+      (function() {
+        var uv = document.createElement('script'); uv.type = 'text/javascript'; uv.async = true;
+        uv.src = '/customer_sites/3/widget.js'; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(uv, s);
+      })();
+    
   = javascript_include_tag "application"
+  
+  
