@@ -25,7 +25,7 @@
           Vote
           %i.icon-thumbs-up.icon-white
 
-%div.posting
+%div.posting{ id: "idea_#{idea.id}" }
   %p= idea.description
 
   %p.info
@@ -33,8 +33,7 @@
     = distance_of_time_in_words(Time.now - idea.created_at)
     ago
   
-  -#%button.btn.btn-mini.btn-danger.delete
-    -#Delete
-    -#%i.icon-remove
+  - if can? :destroy, idea
+    = button_to "Delete", url, class: "btn btn-mini btn-danger delete", method: :delete
   
   .clearfix

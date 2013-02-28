@@ -19,8 +19,18 @@ class Ability
       #manage own sites
       can :manage, Site, user: user
       
-      # edit own ideas
-      can :update, Idea, user: user, site: { user: user }
+      # edit ideas
+      #can :update, Idea, user: user, site: { user: user }
+      
+      # delete idea if it belongs to an owned site
+      can :destroy, Idea do |idea|
+        user.sites.include? idea.site
+      end
+      
+      # delete comment if it belongs to an owned site
+      can :destroy, Comment do |comment|
+        user.sites.include? comment.idea.site
+      end
       
       can :create, Response
       
@@ -29,6 +39,16 @@ class Ability
     else
       
       # VISITOR
+      
+      # delete own idea if no comment or response is attached
+      can :destroy, Idea do |idea|
+        idea.user == user && idea.comments.empty? && idea.responses.empty? && idea.votes.empty?
+      end
+      
+      # delete own idea if no comments follow
+      can :destroy, Comment do |comment|
+        comment.user == user && comment.idea.comments.last == comment
+      end
       
       # edit own ideas
       #can :update, Idea, user: user, editable?: true

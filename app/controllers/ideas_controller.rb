@@ -43,4 +43,14 @@ class IdeasController < ApplicationController
     end
   end
   
+  def destroy
+    @idea = Idea.find(params[:id])
+    @site = @idea.site
+    super do |format|
+      format.html {
+        redirect_to site_path(@site), notice: "Idea was successfully deleted."
+      }
+    end
+  end
+  
 end
