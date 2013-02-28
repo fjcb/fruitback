@@ -2,7 +2,7 @@
 
 %h2 Ideas
 - if !@ideas.empty?
-  - @ideas.each do |idea|
+  - @ideas.sort { |a, b| [b.votes.count, a.title] <=> [a.votes.count, b.title] }.each do |idea|
     %div.idea
       %a{:href => site_idea_path(@site, idea)}
         = render 'ideas/small_idea', site: @site, idea: idea
