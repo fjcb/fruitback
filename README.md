@@ -1,3 +1,19 @@
 # Fruitback
+Fruitback is on Rails.
+Fruitback is an opensource projekt.
+Fruitback helps yout to collect feedback from users of your webapp.
 
-Fruitback is a Ruby on Rails project.
+## Info
+During a seminar called "agile web development" in 2013 our task was to create a webapp using ruby on rails. Our customer wanted us to develop an open-source alternative to sites like uservoice, userespone or getsatisfaction. At first, we needed a special name for our project and we decided to name it "fruitback", because of the idea, that users can give their feedback - in case they got upset of your site - by throwing scruffy fruits at you (of course "fruit-back" is quit similar to "feed-back").
+Fruitback is a ruby on rails project. It allows you to host a feedback-service where other homepage-providers can sign in and create forums and feedback widgets for their sites. 
+
+## How to use
+ 1.  Checkout our repo
+ 2.  Set up your server
+ 3.  ...
+
+## About
+Fruitback was originally programmed by Fritz Jacob and Robert Kuhfﬂ for [Digineo GmbH][] during the AWE course in 2013 at the [University of Bremen][].
+
+[Digineo GmbH]: http://www.digineo.de
+[University of Bremen]: http://www.uni-bremen.de
