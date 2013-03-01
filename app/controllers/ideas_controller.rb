@@ -30,8 +30,14 @@ class IdeasController < ApplicationController
       return
     end
     
+    
     @idea = Idea.new(params[:idea])
     @idea.user = current_user
+    
+    if !@idea.valid?
+      redirect_to site_path(@site), alert: "We are sorry, but something went wrong with your idea."
+      return
+    end
     
     @site.ideas.push @idea
     @site.save
