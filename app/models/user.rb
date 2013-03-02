@@ -23,6 +23,12 @@ class User < ActiveRecord::Base
     !admin? && !customer?
   end
   
+  def as_json(options={})
+    super(
+      only: :name
+    )
+  end
+  
   def send_on_create_confirmation_instructions
     # Don't send mails to users that have no email address
     if email.present?
