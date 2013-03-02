@@ -6,23 +6,18 @@
           = image_tag 'logo.png'
         .nav-collapse.nav_custom
           %ul.nav
-            %li{:class => "#{'active' if current_page?(root_path)}"}
-              =link_to root_path do
-                %i.icon-home.icon-white
-                Home
-            
-            -if admin?
+            - if admin?
               %li{:class => "#{'active' if current_page?(customer_sites_path)}"}
                 = link_to "All sites", customer_sites_path
               
               %li{:class => "#{'active' if current_page?(profiles_path)}"}
                 = link_to "All users", profiles_path
               
-            -elsif customer?
+            - if customer?
               %li{:class => "#{'active' if current_page?(customer_sites_path)}"}
                 = link_to "My sites", customer_sites_path
               
-            -elsif user_signed_in?
+            - if user_signed_in?
               %li{:class => "#{'active' if current_page?(sites_path)}"}
                 = link_to "Sites I posted on", sites_path
                 
