@@ -5,3 +5,6 @@
 %p
   %i.icon-pencil
   = link_to "Settings", edit_customer_site_path(@site)
+%p
+  %i.icon-download-alt
+  = link_to "Export site backup (json)", backup_path(@site)

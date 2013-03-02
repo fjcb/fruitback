@@ -58,6 +58,24 @@ class CustomerSitesController < ApplicationController
     end
   end
   
+  def backup
+    @site = Site.find(params[:id])
+    
+    votes = { votes: { include: :user } }
+    comments = { comments: { include: :user } }
+    responses = { responses: { include: :user } }
+    
+    data = render_to_string json: @site.as_json(
+      include: { ideas: { include: [ 
+          :user,
+          votes, 
+          comments,
+          responses, 
+        ] } } )
+        
+    send_data data, type: "text/json",filename: "backup.json"
+  end
+  
   protected
   
   def prepare_index
