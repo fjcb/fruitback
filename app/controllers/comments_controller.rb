@@ -64,6 +64,7 @@ class CommentsController < ApplicationController
     @idea = Idea.find(params[:idea_id])
     @site = @idea.site
     @comments = @idea.comments
+    @responses = @idea.responses
     @vote = Vote.find_by_user_id_and_idea_id(current_user, @idea) if user_signed_in?
     @user = User.new
     @comments_url = site_idea_comments_path(@site, @idea)
