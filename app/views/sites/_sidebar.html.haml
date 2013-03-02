@@ -1,5 +1,16 @@
+- if @site.url.present?
+  %p
+    %i.icon-home
+    = link_to "Visit #{@site.name}", @site.url
+- if current_user && ( @site.user == current_user || current_user.admin )
+  %p
+    %i.icon-eye-open
+    = link_to "Cusomter View", customer_site_path(@site)
+
 %h2 
-  = "#{@customer.name}"
+  = "#{@site.user.name}"
+%p
+  Other sites by this customer:
 %ul
-  - @customer_sites.each do |site|
+  - @site.user.sites.each do |site|
     %li= link_to site.name, site_path(site.id)

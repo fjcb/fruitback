@@ -6,7 +6,7 @@
 - content_for :sidebar do
   %h1 Browse ideas
   - if !@ideas.empty?
-    - @ideas.sort { |a, b| [b.votes.count, a.title] <=> [a.votes.count, b.title] }.each do |idea|
+    - @ideas.each do |idea|
       %div.idea
         %a{href: site_idea_comments_path(@site, idea), target: '_blank'}
           = render 'ideas/small_idea', idea: idea

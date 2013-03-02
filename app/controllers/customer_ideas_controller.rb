@@ -31,5 +31,6 @@ class CustomerIdeasController < ApplicationController
   def prepare_index
     @site = Site.find(params[:customer_site_id])
     @ideas = @site.ideas
+    @ideas.sort! { |a, b| [b.votes.count, a.title] <=> [a.votes.count, b.title] }
   end
 end
