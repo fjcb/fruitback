@@ -31,7 +31,7 @@ class IdeasController < ApplicationController
     end
     
     flash[:notice] = "Idea was successfully added."
-    redirect_to site_ideas_path(@site)
+    redirect_to site_idea_comments_path(@site, @idea)
   end
   
   def destroy
