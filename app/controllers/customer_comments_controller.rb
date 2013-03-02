@@ -60,6 +60,7 @@ class CustomerCommentsController < ApplicationController
     @idea = Idea.find(params[:customer_idea_id])
     @site = @idea.site
     @comments = @idea.comments
+    @responses = @idea.responses
     @vote = Vote.find_by_user_id_and_idea_id(current_user, @idea) if user_signed_in?
     @user = User.new
     @response = Response.new

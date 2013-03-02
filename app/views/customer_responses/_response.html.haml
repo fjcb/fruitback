@@ -1,0 +1,16 @@
+%div.well.posting{ id: "response_#{response.id}"}
+  %p
+    %span.label{style: "background-color: #{response.state.color};"}
+      = response.state.name
+    &nbsp;
+    = response.text
+  
+  %span.info
+    Posted by #{link_to response.user.name, profile_path(response.user)}
+    = distance_of_time_in_words(Time.now - response.created_at)
+    ago
+  
+  - if can? :destroy, response
+    = button_to "Delete", url, class: "btn btn-mini btn-danger delete", method: :delete
+  
+  .clearfix

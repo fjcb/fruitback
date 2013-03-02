@@ -4,6 +4,11 @@
 
 = render 'ideas/idea', site: @site, idea: @idea, vote: @vote, url: site_idea_path(@site, @idea)
 
+- if !@responses.empty?
+  %h2 Responses
+  - @responses.each do |response|
+    = render 'customer_responses/response', response: response, url: customer_site_customer_idea_customer_response_path(@site, @idea, response)
+
 %h2 Comments
 - if @comments.present?
   - @comments.each do |comment|
