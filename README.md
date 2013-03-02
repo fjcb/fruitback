@@ -1,7 +1,7 @@
 # Fruitback
 Fruitback is on Rails.
 Fruitback is an opensource projekt.
-Fruitback helps yout to collect feedback from users of your webapp.
+Fruitback helps you to collect feedback from users of your webapp.
 
 ## Info
 During a seminar called "agile web development" in 2013 our task was to create a webapp using ruby on rails. Our customer wanted us to develop an open-source alternative to sites like UserVoice, UseRespone or getSatisfaction. At first, we needed a special name for our project and we decided to name it "fruitback", because of the idea, that users can give their feedback - in case they got upset of your site - by throwing scruffy fruits at you (of course "fruit-back" is quit similar to "feed-back").
