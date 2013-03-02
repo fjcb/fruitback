@@ -21,7 +21,8 @@ Fruitback is a ruby on rails project. It allows you to host a feedback-service w
  6.  Widget posts specific customer-site-url
  7.  Sort functions for ideas and comments
  8.  Advanced bug fixing :D
- 9.  ...
+ 9.  Make this an independent gem
+ 10.  ...
 
 ## About
 Fruitback was originally programmed by [Fritz Jacob][] and [Robert Kuhfﬂ][] for [Digineo GmbH][] during the AWE course in 2013 at the [University of Bremen][].
