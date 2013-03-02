@@ -1,41 +1,69 @@
 class CustomerCommentsController < ApplicationController
 
-  inherit_resources
-  skip_load_and_authorize_resource :comment, parent: false
+  authorize_resource :comment, parent: false
   
-  defaults :resource_class => Comment,
-    :collection_name => 'comments',
-    :instance_name => 'comment' 
- 
   layout 'customer_site'
   
+  # Show all comments of an idea
+  def index
+    prepare_index
+    @comment = Comment.new
+  end
+  
   def create
-    
-    @site = Site.find(params[:customer_site_id])
-    @idea = Idea.find(params[:customer_idea_id])
-
     @comment = Comment.new(params[:comment])
-    @comment.user = current_user
     
-    @idea.comments.push @comment
-    @idea.save
-    
-    super do |format|
-      format.html {
-        redirect_to customer_site_customer_idea_path(@site, @idea)
-      }
+    # login through form
+    if not login!
+      prepare_index
+      flash[:alert] = "Invalid email or password."
+      render :index
+      return
     end
+    
+    @comment.user = current_user
+    @idea = Idea.find(params[:customer_idea_id])
+    @comment.idea_id = @idea.id
+    @comment.save
+    
+    if @comment.errors.present?
+      prepare_index
+      render :index
+      return
+    end
+    
+    @site = @idea.site
+    flash[:notice] = "Comment was successfully added."
+    redirect_to customer_site_customer_idea_customer_comments_path(@site, @idea)
   end
 
   def destroy
     @comment = Comment.find(params[:id])
     @idea = @comment.idea
     @site = @idea.site
-    super do |format|
-      format.html {
-        redirect_to customer_site_customer_idea_path(@site, @idea), notice: "Comment was successfully deleted."
-      }
+    
+    @comment.destroy
+    
+    if @comment.errors.present?
+      prepare_index
+      render :index
+      return
     end
+    
+    flash[:notice] = "Comment was successfully deleted."
+    redirect_to customer_site_customer_idea_customer_comments_path(@site, @idea)
   end
-
+  
+  protected
+  
+  def prepare_index
+    @idea = Idea.find(params[:customer_idea_id])
+    @site = @idea.site
+    @comments = @idea.comments
+    @vote = Vote.find_by_user_id_and_idea_id(current_user, @idea) if user_signed_in?
+    @user = User.new
+    @response = Response.new
+    @comments_url = customer_site_customer_idea_customer_comments_path(@site, @idea)
+  end
+  
 end

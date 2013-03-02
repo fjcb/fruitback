@@ -1,6 +1,8 @@
 Fruitback::Application.routes.draw do
 
   root to: "static_pages#home"
+  match '/about', to: 'static_pages#about'
+  match '/help', to: 'static_pages#help'
   
   devise_for :users, controllers: {
     registrations: "registrations",
@@ -8,47 +10,33 @@ Fruitback::Application.routes.draw do
     passwords: "passwords",
     sessions: "sessions" }
   
+  devise_scope :user do
+    put "/confirm" => "confirmations#confirm"
+  end
+  
   match '/profiles/check', to: 'profiles#check'
   match '/profiles/:id/confirm', to: 'profiles#confirm', as: :profiles_confirm
   match '/profiles/:id/upgrade', to: 'profiles#upgrade', as: :profiles_upgrade
-  
   resources :profiles
   
-  resources :customer_sites do
-    
-    resources :customer_ideas do
-      
-      resources :customer_comments
-      
-      resources :customer_responses
-      
-    end
-    
-  end
-  
-  resources :micro_sites do 
-    
-    resources :micro_ideas
-    
-  end
-  
   resources :sites do
-    
     resources :ideas do
-      
       resources :comments
-      
       resources :votes
-      
     end
-  
   end
   
   match '/customer_sites/:id/widget', to: 'customer_sites#widget'
+  resources :customer_sites do
+    resources :customer_ideas do
+      resources :customer_comments
+      resources :customer_responses
+    end
+  end
   
-  match '/about', to: 'static_pages#about'
-  
-  match '/help', to: 'static_pages#help'
+  resources :micro_sites do 
+    resources :micro_ideas
+  end
   
   
   # The priority is based upon order of creation:

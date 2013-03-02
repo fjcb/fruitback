@@ -1,6 +1,6 @@
 %p
   %i.icon-chevron-left
-  = link_to "Back to site", customer_site_path(@site)
+  = link_to "Back to ideas", customer_site_customer_ideas_path(@site)
 
 = render 'ideas/idea', site: @site, idea: @idea, vote: @vote, url: customer_site_customer_idea_path(@site, @idea)
 

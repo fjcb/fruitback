@@ -1,31 +1,46 @@
 class MicroIdeasController < ApplicationController
   
-  inherit_resources
   authorize_resource :idea, parent: false
   
-  defaults :resource_class => Idea,
-    :collection_name => 'ideas',
-    :instance_name => 'idea'
+  layout 'micro_site'
+  
+  def index
+    prepare_index
+    @idea = Idea.new
+  end
   
   def create
+    @idea = Idea.new(params[:idea])
     
-    @site = Site.find(params[:micro_site_id])
-    
-    if !login
-      redirect_to micro_site_path(@site), alert: "Wrong email/password."
+    # login through form
+    if not login!
+      prepare_index
+      flash[:alert] = "Invalid email or password."
+      render :index
       return
     end
     
-    @idea = Idea.new(params[:idea])
     @idea.user = current_user
+    @site = Site.find(params[:micro_site_id])
+    @idea.site_id = @site.id
+    @idea.save
     
-    @site.ideas.push @idea
-    @site.save
-    super do |format|
-      format.html {
-        redirect_to micro_site_path(@site)
-      }
+    if @idea.errors.present?
+      prepare_index
+      render :index
+      return
     end
+    
+    flash[:notice] = "Idea was successfully added."
+    redirect_to micro_site_micro_ideas_path(@site)
   end
   
+  protected
+  
+  def prepare_index
+    @site = Site.find(params[:micro_site_id])
+    @ideas = @site.ideas
+    @user = User.new
+    @ideas_url = micro_site_micro_ideas_path(@site)
+  end
 end

@@ -1,14 +1,14 @@
 %h1= @site.name
 
 %h2 Ideas
-- if !@ideas.empty?
+- if @ideas.present?
   - @ideas.sort { |a, b| [b.votes.count, a.title] <=> [a.votes.count, b.title] }.each do |idea|
     %div.idea
-      %a{:href => site_idea_path(@site, idea)}
-        = render 'ideas/small_idea', site: @site, idea: idea
+      %a{ :href => site_idea_comments_path(@site, idea) }
+        = render 'ideas/small_idea', idea: idea
 - else
   = render 'ideas/empty'
 
 - content_for :sidebar do
   %h2 Post a new idea
-  = render 'ideas/form'
+  = render 'form', url: @ideas_url

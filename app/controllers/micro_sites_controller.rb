@@ -6,10 +6,7 @@ class MicroSitesController < ApplicationController
   
   def show
     @site = Site.find(params[:id])
-    @ideas = @site.ideas.limit(5)
-    @idea = Idea.new
-    @user = User.new
-    @form_url = micro_site_micro_ideas_path(@site)
+    redirect_to micro_site_micro_ideas_path(@site)
   end
-  
+
 end

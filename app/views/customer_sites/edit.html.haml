@@ -1,21 +1,21 @@
 %p
   %i.icon-chevron-left
-  = link_to "Back to site", customer_site_path(@site)
+  = link_to "Back to the site", customer_site_customer_ideas_path(@site)
 
 %h1
   Settings for:
   =@site.name
 
 %h2 Change site
-= render 'form'
+= render 'form', url: @site_url
 
 %h2 Insert this to your homepage
 %textarea.code.input-xxlarge{rows: "7", onClick: "this.select();"}
   &  <script type="text/javascript">
   &    (function() {
-  &      var uv = document.createElement('script'); uv.type = 'text/javascript'; uv.async = true;
-  &      uv.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + '#{widget_url(@site)}';
-  &      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(uv, s);
+  &      var frb = document.createElement('script'); frb.type = 'text/javascript'; frb.async = true;
+  &      frb.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + '#{widget_url(@site)}';
+  &      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(frb, s);
   &    })();
   &  </script>
 

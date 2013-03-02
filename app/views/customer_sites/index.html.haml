@@ -1,12 +1,12 @@
 
 %h1 Sites
 
-- if !@sites.empty?
+- if @sites.present?
   %table.table.table-hover.table-bordered
     %tbody
       - @sites.each do |site|
         %tr
-          %td= link_to site.name, customer_site_path(site)
+          %td= link_to site.name, customer_site_customer_ideas_path(site)
 - else
   %div.well
     %h2 First steps
@@ -15,4 +15,4 @@
 - content_for :sidebar do
   - if can? :create, @site
     %h2 Create new site
-    = render 'form'
+    = render 'form', url: @sites_url
