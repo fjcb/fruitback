@@ -17,4 +17,20 @@ class CustomerResponsesController < ApplicationController
     redirect_to customer_site_customer_idea_customer_comments_path(@site, @idea)
   end
 
+  def destroy
+    @response = Response.find(params[:id])
+    @idea = @response.idea
+    @site = @idea.site
+    
+    @response.destroy
+    
+    respond_to do |format|
+      format.html {
+        flash[:notice] = "Response was successfully deleted."
+        redirect_to customer_site_customer_idea_customer_comments_path(@site, @idea)
+      }
+      format.json { render json: { success: @response.errors.blank? } }
+    end
+  end
+
 end

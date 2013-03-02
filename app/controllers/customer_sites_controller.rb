@@ -79,7 +79,11 @@ class CustomerSitesController < ApplicationController
   protected
   
   def prepare_index
-    @sites = current_user.sites
+    @sites = if admin?
+      Site.all
+    else
+      current_user.sites
+    end
     @sites_url = customer_sites_path
   end
   
