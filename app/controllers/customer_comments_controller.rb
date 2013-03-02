@@ -1,6 +1,6 @@
 class CustomerCommentsController < ApplicationController
 
-  authorize_resource :comment, parent: false
+  load_and_authorize_resource :comment, parent: false
   
   layout 'customer_site'
   

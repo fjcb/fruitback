@@ -1,6 +1,6 @@
 class CommentsController < ApplicationController
   
-  authorize_resource
+  load_and_authorize_resource
   
   # Show all comments of an idea
   def index

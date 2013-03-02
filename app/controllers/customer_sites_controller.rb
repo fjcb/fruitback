@@ -1,6 +1,6 @@
 class CustomerSitesController < ApplicationController
   
-  authorize_resource :site, parent: false, except: :widget
+  load_and_authorize_resource :site, parent: false, except: :widget
   
   layout 'customer_site'
   

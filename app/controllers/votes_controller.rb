@@ -1,6 +1,6 @@
 class VotesController < ApplicationController
   
-  authorize_resource
+  load_and_authorize_resource
   
   # JSON only
   def create

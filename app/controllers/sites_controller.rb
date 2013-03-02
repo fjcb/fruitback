@@ -1,6 +1,6 @@
 class SitesController < ApplicationController
   
-  authorize_resource
+  load_and_authorize_resource
   
   layout 'customer_site', only: 'index'
   

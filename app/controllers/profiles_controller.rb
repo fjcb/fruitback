@@ -1,11 +1,6 @@
 class ProfilesController < ApplicationController
   
-  inherit_resources
-  authorize_resource :user, parent: false, except: :check
-  
-  defaults :resource_class => User,
-    :collection_name => 'users',
-    :instance_name => 'user'
+  load_and_authorize_resource :user, parent: false, except: :check
   
   layout 'customer_site'
   

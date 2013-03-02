@@ -1,6 +1,6 @@
 class MicroSitesController < ApplicationController
   
-  authorize_resource :site, parent: false
+  load_and_authorize_resource :site, parent: false
   
   layout 'micro_site'
   

@@ -1,6 +1,6 @@
 class CustomerIdeasController < ApplicationController
 
-  authorize_resource :idea, parent: false
+  load_and_authorize_resource :idea, parent: false
   
   layout 'customer_site'
   

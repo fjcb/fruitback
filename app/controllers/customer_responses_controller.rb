@@ -1,6 +1,6 @@
 class CustomerResponsesController < ApplicationController
 
-  authorize_resource :response, parent: false
+  load_and_authorize_resource :response, parent: false
   
   layout 'customer_site'
   

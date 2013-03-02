@@ -1,6 +1,6 @@
 class IdeasController < ApplicationController
   
-  authorize_resource
+  load_and_authorize_resource
   
   # Show all ideas of a site
   def index

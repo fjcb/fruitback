@@ -1,6 +1,6 @@
 class MicroIdeasController < ApplicationController
   
-  authorize_resource :idea, parent: false
+  load_and_authorize_resource :idea, parent: false
   
   layout 'micro_site'
   
