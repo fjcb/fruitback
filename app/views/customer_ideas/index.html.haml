@@ -1,0 +1,17 @@
+%p
+  %i.icon-chevron-left
+  = link_to "Back to my sites", customer_sites_path
+
+%h1= @site.name
+
+%h2 Ideas
+- if @ideas.present?
+  - @ideas.sort { |a, b| [b.votes.count, a.title] <=> [a.votes.count, b.title] }.each do |idea|
+    %div.idea
+      %a{ :href => customer_site_customer_idea_customer_comments_path(@site, idea) }
+        = render 'ideas/small_idea', idea: idea
+- else
+  = render 'ideas/empty'
+
+- content_for :sidebar do
+  = render "customer_sites/sidebar"

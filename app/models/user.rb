@@ -23,6 +23,24 @@ class User < ActiveRecord::Base
     !admin? && !customer?
   end
   
+  def send_on_create_confirmation_instructions
+    # Don't send mails to users that have no email address
+    if email.present?
+      super
+    end
+  end
+  
+  def password_required?
+    super if confirmed?
+  end
+
+  def password_match?
+    self.errors[:password] << "can't be blank" if password.blank?
+    self.errors[:password_confirmation] << "can't be blank" if password_confirmation.blank?
+    self.errors[:password_confirmation] << "does not match password" if password != password_confirmation
+    password == password_confirmation && !password.blank?
+  end
+  
   validates :name, presence: true, length: { maximum: 50 }
   validates :admin, presence: true, on: :save
   validates :customer, presence: true, on: :save

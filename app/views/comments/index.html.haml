@@ -1,11 +1,11 @@
 %p
   %i.icon-chevron-left
-  = link_to "Browse ideas", site_path(@site)
+  = link_to "Browse ideas", site_ideas_path(@site)
 
 = render 'ideas/idea', site: @site, idea: @idea, vote: @vote, url: site_idea_path(@site, @idea)
 
 %h2 Comments
-- if !@comments.empty?
+- if @comments.present?
   - @comments.each do |comment|
     = render 'comments/comment', comment: comment, url: site_idea_comment_path(@site, @idea, comment)
 - else
@@ -14,7 +14,5 @@
 - content_for :sidebar do
   - if can? :create, @comment
     %h3 Add comment
-    = render 'comments/form', url: site_idea_comments_path(@site, @idea)
-    
+    = render 'comments/form', url: @comments_url
   = render 'sites/sidebar'
-       

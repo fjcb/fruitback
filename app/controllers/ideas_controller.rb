@@ -1,62 +1,63 @@
 class IdeasController < ApplicationController
   
-  inherit_resources
   authorize_resource
   
-  def show
-    @idea = Idea.find(params[:id])
-    @site = Site.find(params[:site_id])
-    @form_url = site_idea_path(@site, @idea)
-    @comments = @idea.comments
-    @comment = Comment.new
-    @user = User.new
-    @vote = Vote.find_by_user_id_and_idea_id(current_user, @idea) if user_signed_in?
-    super
-  end
-  
-  def update
-    @site = Site.find(params[:site_id])
-    super do |format|
-      format.html { redirect_to site_idea_path(@site, @idea) }
-    end
+  # Show all ideas of a site
+  def index
+    prepare_index
+    @idea = Idea.new
   end
   
   def create
-    
-    @site = Site.find(params[:site_id])
-    
-    if !login
-      redirect_to site_path(@site), alert: "Wrong email/password."
-      return
-    end
-    
-    
     @idea = Idea.new(params[:idea])
-    @idea.user = current_user
     
-    if !@idea.valid?
-      redirect_to site_path(@site), alert: "We are sorry, but something went wrong with your idea."
+    # login through form
+    if not login!
+      prepare_index
+      flash[:alert] = "Invalid email or password."
+      render :index
       return
     end
     
-    @site.ideas.push @idea
-    @site.save
+    @idea.user = current_user
+    @site = Site.find(params[:site_id])
+    @idea.site_id = @site.id
+    @idea.save
     
-    super do |format|
-      format.html {
-        redirect_to site_idea_path(@site, @idea)
-      }
+    if @idea.errors.present?
+      prepare_index
+      render :index
+      return
     end
+    
+    flash[:notice] = "Idea was successfully added."
+    redirect_to site_ideas_path(@site)
   end
   
   def destroy
     @idea = Idea.find(params[:id])
     @site = @idea.site
-    super do |format|
-      format.html {
-        redirect_to site_path(@site), notice: "Idea was successfully deleted."
-      }
-    end
+    
+    @idea.destroy
+    
+    flash[:notice] = "Idea was successfully deleted."
+    redirect_to site_ideas_path(@site)
+  end
+  
+  def show
+    @idea = Idea.find(params[:id])
+    @site = @idea.site
+    redirect_to site_idea_comments_path(@site, @idea)
+  end
+  
+  protected
+  
+  def prepare_index
+    @site = Site.find(params[:site_id])
+    @ideas = @site.ideas
+    @ideas.sort! { |a, b| [b.votes.count, a.title] <=> [a.votes.count, b.title] }
+    @user = User.new
+    @ideas_url = site_ideas_path(@site)
   end
   
 end

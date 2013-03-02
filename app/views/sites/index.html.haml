@@ -1,11 +1,11 @@
 
 %h1 Sites I posted on
 
-- if !@sites.empty?
+- if @sites.present?
   %table.table.table-hover.table-bordered
     %tbody
       - @sites.each do |site|
         %tr
-          %td= link_to site.name, site_path(site)
+          %td= link_to site.name, site_ideas_path(site)
 - else
   = render 'ideas/empty'

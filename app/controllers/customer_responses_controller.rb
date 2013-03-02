@@ -5,20 +5,16 @@ class CustomerResponsesController < ApplicationController
   layout 'customer_site'
   
   def create
-    @site = Site.find(params[:customer_site_id])
     @idea = Idea.find(params[:customer_idea_id])
+    @site = @idea.site
     
-    if admin? || customer? && current_user.sites.include?(@site)
-      @response = Response.new(params[:response])
-      @response.user_id = current_user.id
-      @response.idea_id = @idea.id
-      @response.save
-      redirect_to customer_site_customer_idea_path(@site, @idea), notice: "Response was successfully added."
-      return
-    end
+    @response = Response.new(params[:response])
+    @response.user_id = current_user.id
+    @response.idea_id = @idea.id
+    @response.save
     
-    flash[:alert] = "Something went wrong."
-    redirect_to customer_site_customer_idea_path(@site, @idea)
+    flash[:notice] = "Response was successfully added."
+    redirect_to customer_site_customer_idea_customer_comments_path(@site, @idea)
   end
 
 end

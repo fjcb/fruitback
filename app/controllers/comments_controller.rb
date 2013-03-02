@@ -1,50 +1,66 @@
 class CommentsController < ApplicationController
   
-  inherit_resources
-  skip_load_and_authorize_resource
+  authorize_resource
   
-  def update
-    @idea = Idea.find(params[:idea_id])
-    @site = Site.find(params[:site_id])
-    super do |format|
-      format.html {
-        redirect_to site_idea_path(@site, @idea)
-      }
-    end
+  # Show all comments of an idea
+  def index
+    prepare_index
+    @comment = Comment.new
   end
   
   def create
-    
-    @site = Site.find(params[:site_id])
-    @idea = Idea.find(params[:idea_id])
-    
-    if !login
-      redirect_to site_idea_path(@site, @idea), alert: "Wrong email/password."
+    @comment = Comment.new(params[:comment])
+
+    # login through form
+    if not login!
+      prepare_index
+      flash[:alert] = "Invalid email or password."
+      render :index
       return
     end
     
-    @comment = Comment.new(params[:comment])
     @comment.user = current_user
+    @idea = Idea.find(params[:idea_id])
+    @comment.idea_id = @idea.id
+    @comment.save
     
-    @idea.comments.push @comment
-    @idea.save
-    
-    super do |format|
-      format.html {
-        redirect_to site_idea_path(@site, @idea)
-      }
+    if @comment.errors.present?
+      prepare_index
+      render :index
+      return
     end
+    
+    @site = @idea.site
+    flash[:notice] = "Comment was successfully added."
+    redirect_to site_idea_comments_path(@site, @idea)
   end
   
   def destroy
     @comment = Comment.find(params[:id])
     @idea = @comment.idea
     @site = @idea.site
-    super do |format|
-      format.html {
-        redirect_to site_idea_path(@site, @idea), notice: "Comment was successfully deleted."
-      }
+    
+    @comment.destroy
+    
+    if @comment.errors.present?
+      prepare_index
+      render :index
+      return
     end
+    
+    flash[:notice] = "Comment was successfully deleted."
+    redirect_to site_idea_comments_path(@site, @idea)
+  end
+  
+  protected
+  
+  def prepare_index
+    @idea = Idea.find(params[:idea_id])
+    @site = @idea.site
+    @comments = @idea.comments
+    @vote = Vote.find_by_user_id_and_idea_id(current_user, @idea) if user_signed_in?
+    @user = User.new
+    @comments_url = site_idea_comments_path(@site, @idea)
   end
   
 end

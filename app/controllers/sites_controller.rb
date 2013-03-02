@@ -1,6 +1,5 @@
 class SitesController < ApplicationController
   
-  inherit_resources
   authorize_resource
   
   layout 'customer_site', only: 'index'
@@ -24,16 +23,11 @@ class SitesController < ApplicationController
         end
       }
     end
-    
-    super
   end
   
   def show
     @site = Site.find(params[:id])
-    @ideas = @site.ideas
-    @idea = Idea.new
-    @user = User.new
-    super
+    redirect_to site_ideas_path(@site)
   end
   
 end

@@ -1,5 +1,5 @@
 
-= simple_form_for [@site, @idea], url: @form_url do |f|
+= simple_form_for [@site, @idea], url: url do |f|
   = f.error_notification
   
   = f.input :title, required: true, input_html: { class: "input-xlarge" }, placeholder: "Enter your idea here", label: false

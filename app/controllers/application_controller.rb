@@ -31,23 +31,34 @@ class ApplicationController < ActionController::Base
     !current_user.try(:email)
   end
   
-  def login
-    if !user_signed_in?
+  def login!
+    if not user_signed_in?
       # Try to log in existing user
       user = User.find_by_email(params[:user][:email])
       if user
-        if user.valid_password?(params[:user][:password])
-          sign_in(user)
-        else
+        if not user.valid_password?(params[:user][:password])
           return false
         end
       else
         user = User.new(params[:user])
-        user.name = "Anonymous" if !user.name || user.name.empty?
-        user.save
-        sign_in(user)
+        
+        # email should be nil, not empty
+        if user.email.blank?
+          user.email = nil
+          user.skip_confirmation!
+        end
+        
+        # set anonymous as user name if no name was given
+        if user.name.blank?
+          user.name = "Anonymous"
+        end
+        
+        user.save!
+        
       end
+      sign_in(user)
     end
+    
     true
   end
   

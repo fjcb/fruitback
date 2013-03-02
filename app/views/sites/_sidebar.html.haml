@@ -1,4 +1,4 @@
-- if @site.url != ""
+- if @site.url.present?
   %p
     %i.icon-home
     = link_to "Visit #{@site.name}", @site.url
