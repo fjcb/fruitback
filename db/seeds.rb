@@ -18,7 +18,7 @@ State.create! name: 'Started', color: '#006DCC'
 State.create! name: 'Completed', color: '#5BB75B'
 
 # demo stuff
-customer = User.create! name: "Demo Customer", email: "customer@example.com", password: "customer", customer: true
+customer = User.create! name: "Demo Customer", email: "customer1@example.com", password: "customer", customer: true
 user1 = User.create! name: "Alice Demo", email: "alice@example.com", password: "demodemo"
 user2 = User.create! name: "Bob Demo", email: "bob@example.com", password: "demodemo"
 user3 = User.create! name: "Carl Demo", email: "carl@example.com", password: "demodemo"
@@ -91,6 +91,6 @@ if Rails.env.development?
   #FactoryGirl.create(:comment)
   #FactoryGirl.create(:comment)
   
-  FactoryGirl.create(:site)
-  FactoryGirl.create(:site)
+  #FactoryGirl.create(:site)
+  #FactoryGirl.create(:site)
 end
