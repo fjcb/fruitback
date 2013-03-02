@@ -44,7 +44,7 @@ describe "UserPosts" do
     end
     
     it "should not be valid" do
-      page.should have_content "something went wrong"
+      page.should have_content "can't be blank"
     end
     
     it "should not be saved" do
@@ -65,7 +65,7 @@ describe "UserPosts" do
     end
     
     it "should not be valid" do
-      page.should have_content "something went wrong"
+      page.should have_content "can't be blank"
     end
     
     it "should not be saved" do
@@ -86,7 +86,7 @@ describe "UserPosts" do
     end
     
     it "should not be valid" do
-      page.should have_content "something went wrong"
+      page.should have_content "is too long"
     end
     
     it "should not be saved" do
@@ -107,7 +107,7 @@ describe "UserPosts" do
     end
     
     it "should not be valid" do
-      page.should have_content "something went wrong"
+      page.should have_content "is too long"
     end
     
     it "should not be saved" do
@@ -123,7 +123,7 @@ describe "UserPosts" do
       @idea.site_id = @site.id
       @idea.user_id = @user.id
       @idea.save!
-      
+
       visit site_idea_path(@site, @idea)
         
       fill_in('comment_text', :with => 'my comment')
@@ -178,7 +178,7 @@ describe "UserPosts" do
     end
     
     it "should not be valid" do
-      page.should have_content "too many characters"
+      page.should have_content "is too long"
     end
     
     it "should not be saved" do

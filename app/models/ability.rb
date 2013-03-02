@@ -24,12 +24,14 @@ class Ability
       
       # delete idea if it belongs to an owned site
       can :destroy, Idea do |idea|
-        user.sites.include? idea.site
+        user.sites.include? idea.site or
+          idea.user == user && idea.comments.empty? && idea.responses.empty? && idea.votes.empty?
       end
       
       # delete comment if it belongs to an owned site
       can :destroy, Comment do |comment|
-        user.sites.include? comment.idea.site
+        user.sites.include? comment.idea.site or
+          comment.user == user && comment.idea.comments.last == comment
       end
       
       can :create, Response

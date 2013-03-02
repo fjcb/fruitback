@@ -44,14 +44,19 @@ class CustomerCommentsController < ApplicationController
     
     @comment.destroy
     
-    if @comment.errors.present?
-      prepare_index
-      render :index
-      return
+    respond_to do |format|
+      format.html {
+        if @comment.errors.present?
+          prepare_index
+          render :index
+          return
+        end
+        
+        flash[:notice] = "Comment was successfully deleted."
+        redirect_to customer_site_customer_idea_customer_comments_path(@site, @idea)
+      }
+      format.json { render json: { success: @comment.errors.blank? } }
     end
-    
-    flash[:notice] = "Comment was successfully deleted."
-    redirect_to customer_site_customer_idea_customer_comments_path(@site, @idea)
   end
   
   protected

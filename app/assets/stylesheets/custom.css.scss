@@ -10,7 +10,25 @@ $light_gray: #B1B1B1;
 
 // CUSTOM
 
+textarea {
+  resize: none;
+}
+
+
 .posting {
+  
+  .delete {
+    //visibility: hidden;
+    opacity: 0.3;
+    transition: opacity .25s ease-in-out;
+    -moz-transition: opacity .25s ease-in-out;
+    -webkit-transition: opacity .25s ease-in-out;
+  }
+  
+  &:hover .delete {
+    //visibility: visible;
+    opacity: 0.99;
+  }
   
   p {
     text-align: justify;
@@ -102,7 +120,7 @@ p {
 }
 
 .sidebar {
-  padding: 20px 20px 20px 0;
+  padding: 20px 20px 20px 5px;
   //height: 100%;
   //border-left: 1px dashed #CCC;
 }
