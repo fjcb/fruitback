@@ -81,7 +81,7 @@ class CustomerSitesController < ApplicationController
   def prepare_index
     @sites = if admin?
       Site.all
-    elsif user_logged_in?
+    elsif user_signed_in?
       current_user.sites
     else
       []
