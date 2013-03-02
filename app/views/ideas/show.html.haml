@@ -15,4 +15,6 @@
   - if can? :create, @comment
     %h3 Add comment
     = render 'comments/form', url: site_idea_comments_path(@site, @idea)
+    
+  = render 'sites/sidebar'
        

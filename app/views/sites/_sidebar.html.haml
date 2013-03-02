@@ -1,5 +1,12 @@
+- if @site.url != ""
+  %p
+    %i.icon-home
+    = link_to "Visit #{@site.name}", @site.url
+
 %h2 
-  = "#{@customer.name}"
+  = "#{@site.user.name}"
+%p
+  Other sites by this customer:
 %ul
-  - @customer_sites.each do |site|
+  - @site.user.sites.each do |site|
     %li= link_to site.name, site_path(site.id)
