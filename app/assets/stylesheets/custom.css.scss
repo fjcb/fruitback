@@ -14,7 +14,21 @@ textarea {
   resize: none;
 }
 
+
 .posting {
+  
+  .delete {
+    //visibility: hidden;
+    opacity: 0.3;
+   transition: opacity .20s ease-in-out;
+   -moz-transition: opacity .20s ease-in-out;
+   -webkit-transition: opacity .20s ease-in-out;
+  }
+  
+  &:hover .delete {
+    //visibility: visible;
+    opacity: 0.99;
+  }
   
   p {
     text-align: justify;
