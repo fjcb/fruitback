@@ -17,10 +17,16 @@ Fruitback is a ruby on rails project. It allows you to host a feedback-service w
  2.  Editable ideas (Customer and appendent user)
  3.  Editable Comments (Customer and appendent user)
  4.  Fix Account Deletion (DB)
- 5.  ...
+ 5.  Customer site personalization
+ 6.  Widget posts specific customer-site-url
+ 7.  Sort functions for ideas and comments
+ 8.  Advanced bug fixing :D
+ 9.  ...
 
 ## About
-Fruitback was originally programmed by Fritz Jacob and Robert Kuhfﬂ for [Digineo GmbH][] during the AWE course in 2013 at the [University of Bremen][].
+Fruitback was originally programmed by [Fritz Jacob][] and [Robert Kuhfﬂ][] for [Digineo GmbH][] during the AWE course in 2013 at the [University of Bremen][].
 
+[Fritz Jacob]: https://github.com/fjcb
+[Robert Kuhfﬂ]: https://github.com/NanoWar
 [Digineo GmbH]: http://www.digineo.de
 [University of Bremen]: http://www.uni-bremen.de
