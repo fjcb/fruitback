@@ -2,6 +2,10 @@
   %p
     %i.icon-home
     = link_to "Visit #{@site.name}", @site.url
+- if current_user && ( @site.user == current_user || current_user.admin )
+  %p
+    %i.icon-eye-open
+    = link_to "Cusomter View", customer_site_path(@site)
 
 %h2 
   = "#{@site.user.name}"
