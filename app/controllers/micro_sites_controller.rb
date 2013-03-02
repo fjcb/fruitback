@@ -6,7 +6,8 @@ class MicroSitesController < ApplicationController
   
   def show
     @site = Site.find(params[:id])
-    @ideas = @site.ideas.limit(5)
+    @ideas = @site.ideas
+    @ideas.sort! { |a, b| [b.votes.count, a.title] <=> [a.votes.count, b.title] }
     @idea = Idea.new
     @user = User.new
     @form_url = micro_site_micro_ideas_path(@site)
