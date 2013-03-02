@@ -5,6 +5,6 @@ class Site < ActiveRecord::Base
   
   has_many :ideas, :dependent => :delete_all
   
-  validates :name, presence: true, length: { maximum: 50 }
+  validates :name, presence: true, length: { maximum: 50 } 
   
 end
